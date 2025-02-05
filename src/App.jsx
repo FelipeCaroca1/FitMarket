@@ -1,10 +1,12 @@
+import Layout from "./components/Layout/Layout";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <h1 className="text-4xl font-bold text-blue-500">
-        ¡TailwindCSS está funcionando bien!
-      </h1>
-    </div>
+    <Layout>
+      <h2 className="text-center text-3xl font-bold mt-8 text-neonPurple">
+        Bienvenido a <span className="text-neonPurple">FitMarket</span>
+      </h2>
+    </Layout>
   );
 }
 
