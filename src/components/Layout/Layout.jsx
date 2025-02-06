@@ -4,9 +4,9 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-dark text-white">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow p-4">{children}</main>
+      <main className="flex-grow flex items-center justify-center">{children}</main>
       <Footer />
     </div>
   );

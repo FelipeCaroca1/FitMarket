@@ -1,21 +1,19 @@
+import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo.png"; 
+
 const Navbar = () => {
-    return (
-      <nav className="bg-dark text-white p-4 flex justify-between items-center border-b-2 border-neonBlue shadow-md">
-        <h1 className="text-2xl font-bold text-neonBlue">FitMarket</h1>
-        <div className="space-x-4">
-          <a href="#" className="hover:text-neonPurple transition-all duration-300">
-            Inicio
-          </a>
-          <a href="#" className="hover:text-neonPurple transition-all duration-300">
-            Tienda
-          </a>
-          <a href="#" className="hover:text-neonPurple transition-all duration-300">
-            Perfil
-          </a>
-        </div>
-      </nav>
-    );
-  };
-  
-  export default Navbar;
-  
+  return (
+    <nav className="bg-background text-textPrimary border-b-2 border-textSecondary px-8 py-4 flex justify-between items-center">
+      <div className="flex items-center">
+        <img src={logo} alt="FitMarket Logo" className="h-20 w-auto" /> 
+      </div>
+      <div className="space-x-6">
+        <Link to="/" className="text-textSecondary hover:text-primary transition-colors">Inicio</Link>
+        <Link to="/shop" className="text-textSecondary hover:text-primary transition-colors">Tienda</Link>
+        <Link to="/profile" className="text-textSecondary hover:text-primary transition-colors">Perfil</Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

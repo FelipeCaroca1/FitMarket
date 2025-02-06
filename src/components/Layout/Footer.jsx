@@ -1,9 +1,7 @@
 const Footer = () => {
     return (
-      <footer className="bg-dark text-white p-4 text-center border-t-2 border-neonBlue">
-        <p className="text-sm text-white tracking-wide">
-          &copy; 2025 FitMarket - Todos los derechos reservados
-        </p>
+      <footer className="bg-background text-textSecondary border-t-2 border-textSecondary py-4 text-center">
+        <p>© 2025 FitMarket - Todos los derechos reservados</p>
       </footer>
     );
   };

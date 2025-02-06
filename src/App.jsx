@@ -3,9 +3,11 @@ import Layout from "./components/Layout/Layout";
 function App() {
   return (
     <Layout>
-      <h2 className="text-center text-3xl font-bold mt-8 text-neonPurple">
-        Bienvenido a <span className="text-neonPurple">FitMarket</span>
-      </h2>
+      <div className="flex items-center justify-center w-screen bg-background">
+        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500">
+          Bienvenido a FitMarket
+        </h1>
+      </div>
     </Layout>
   );
 }
