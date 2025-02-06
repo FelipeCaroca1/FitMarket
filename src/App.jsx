@@ -1,13 +1,15 @@
 import Layout from "./components/Layout/Layout";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
     <Layout>
-      <div className="flex items-center justify-center w-screen bg-background">
-        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500">
-          Bienvenido a FitMarket
-        </h1>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
     </Layout>
   );
 }

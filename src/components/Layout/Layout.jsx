@@ -4,9 +4,12 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="bg-background min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow flex items-center justify-center">{children}</main>
+      {/* 🔥 FIX: Esto garantiza que el contenido ocupe el espacio suficiente */}
+      <main className="flex-grow flex flex-col justify-center items-center w-full px-8">
+        {children}
+      </main>
       <Footer />
     </div>
   );
