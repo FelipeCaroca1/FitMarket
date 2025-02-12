@@ -10,6 +10,7 @@ const Navbar = () => {
       <div className="space-x-6">
         <Link to="/" className="text-textSecondary hover:text-primary transition-colors">Inicio</Link>
         <Link to="/shop" className="text-textSecondary hover:text-primary transition-colors">Tienda</Link>
+        <Link to="/register" className="text-textSecondary hover:text-primary transition-colors">Registrarse</Link> {/* ✅ Agregado */}
         <Link to="/profile" className="text-textSecondary hover:text-primary transition-colors">Perfil</Link>
       </div>
     </nav>

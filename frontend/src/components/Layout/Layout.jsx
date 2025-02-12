@@ -4,13 +4,12 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="bg-background min-h-screen flex flex-col">
+    <div className="bg-background flex flex-col min-h-screen">
       <Navbar />
-      {/* 🔥 FIX: Esto garantiza que el contenido ocupe el espacio suficiente */}
-      <main className="flex-grow flex flex-col justify-center items-center w-full px-8">
+      <main className="flex-1 flex flex-col justify-center items-center w-full px-8">
         {children}
       </main>
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 };
