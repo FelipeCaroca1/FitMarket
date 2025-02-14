@@ -7,10 +7,10 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider> {/* ✅ Envolvemos la app con el AuthProvider */}
-      <BrowserRouter>
+    <BrowserRouter> {/* ✅ Ahora envuelve todo */}
+      <AuthProvider> {/* ✅ Ahora está dentro del BrowserRouter */}
         <App />
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

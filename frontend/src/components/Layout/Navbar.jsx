@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext"; // Importamos el contexto
 import logo from "../../assets/img/logo.png";
 
 const Navbar = () => {
-  const { isAuthenticated, isRegistered } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext); // 🔥 Usamos `user` en lugar de `isAuthenticated`
 
   return (
     <nav className="bg-background text-textPrimary border-b-2 border-textSecondary px-8 py-4 flex justify-between items-center">
@@ -15,21 +15,31 @@ const Navbar = () => {
         <Link to="/" className="text-textSecondary hover:text-primary transition-colors">Inicio</Link>
         <Link to="/shop" className="text-textSecondary hover:text-primary transition-colors">Tienda</Link>
 
-        {/* ✅ Lógica dinámica según el estado del usuario */}
-        {!isAuthenticated && !isRegistered && (
-          <Link to="/register" className="text-textSecondary hover:text-primary transition-colors">
-            Registrarse
-          </Link>
+        {/* ✅ Si el usuario NO está autenticado, muestra "Registrarse" o "Iniciar Sesión" */}
+        {!user && (
+          <>
+            <Link to="/register" className="text-textSecondary hover:text-primary transition-colors">
+              Registrarse
+            </Link>
+            <Link to="/login" className="text-textSecondary hover:text-primary transition-colors">
+              Iniciar Sesión
+            </Link>
+          </>
         )}
-        {!isAuthenticated && isRegistered && (
-          <Link to="/login" className="text-textSecondary hover:text-primary transition-colors">
-            Iniciar Sesión
-          </Link>
-        )}
-        {isAuthenticated && (
-          <Link to="/profile" className="text-textSecondary hover:text-primary transition-colors">
-            Perfil
-          </Link>
+
+        {/* ✅ Si el usuario está autenticado, muestra "Perfil" y "Cerrar Sesión" */}
+        {user && (
+          <>
+            <Link to="/Profile" className="text-textSecondary hover:text-primary transition-colors">
+              Perfil
+            </Link>
+            <button
+              onClick={logoutUser}
+              className="text-textSecondary hover:text-red-500 transition-colors"
+            >
+              Cerrar Sesión
+            </button>
+          </>
         )}
       </div>
     </nav>

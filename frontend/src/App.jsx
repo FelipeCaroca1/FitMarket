@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile"; 
 import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
@@ -16,12 +17,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Rutas Privadas (aún sin páginas definidas) */}
+        {/* Ruta Privada para el perfil */}
         <Route
-          path="/ruta-protegida"
+          path="/Profile"
           element={
             <PrivateRoutes>
-              <h1>Página Protegida (Placeholder)</h1>
+              <Profile />
             </PrivateRoutes>
           }
         />

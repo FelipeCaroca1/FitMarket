@@ -1,76 +1,92 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Button from "../components/Button"; // Importamos el nuevo componente
+import { useState, useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import Button from "../components/Button";
 
 const Register = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-    });
+  const { registerUser, user } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Formulario enviado:", formData);
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    return (
-        <div className="w-full flex justify-center items-center px-4">
-            <div className="bg-black/90 text-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
-                <h2 className="text-2xl font-bold text-center mb-6">Crear Cuenta</h2>
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-                    <div className="flex gap-4">
-                        <div className="flex flex-col w-1/2">
-                            <label className="text-sm">Nombre</label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                            />
-                        </div>
-                        <div className="flex flex-col w-1/2">
-                            <label className="text-sm">Correo Electrónico</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                                required
-                            />
-                        </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm">Contraseña</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none focus:ring-2 focus:ring-primary"
-                            required
-                        />
-                    </div>
-                    <div className="mt-4">
-                        <Button type="submit">Registrarse</Button>
-                    </div>
-                </form>
-                <p className="text-center mt-4 text-sm">
-                    ¿Ya tienes cuenta?{" "}
-                    <Link to="/login" className="text-red-400 hover:text-red-500">
-                        Inicia sesión aquí
-                    </Link>
-                </p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+  
+    if (user) {
+      localStorage.removeItem("user");
+      setError("Se cerró la sesión anterior. Intenta registrar de nuevo.");
+      return;
+    }
+  
+    try {
+      await registerUser({
+        name: formData.newName, // Cambia a "name"
+        email: formData.newEmail, // Cambia a "email"
+        password: formData.newPassword, // Cambia a "password"
+      });
+    } catch (error) {
+      setError(error.message || "Error al registrar usuario");
+    }
+  };
+  
+
+  return (
+    <div className="w-full flex justify-center items-center px-4">
+      <div className="bg-black/90 text-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
+        <h2 className="text-2xl font-bold text-center mb-6">Crear Cuenta</h2>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <div className="flex gap-4">
+            <div className="flex flex-col w-1/2">
+              <label className="text-sm">Nombre</label>
+              <input
+                type="text"
+                name="newName"
+                value={formData.newName}
+                onChange={handleChange}
+                autoComplete="new-name" // 🔥 Evita autocompletado no deseado
+                className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
+                required
+              />
             </div>
-        </div>
-    );
+            <div className="flex flex-col w-1/2">
+              <label className="text-sm">Correo Electrónico</label>
+              <input
+                type="email"
+                name="newEmail"
+                value={formData.newEmail}
+                onChange={handleChange}
+                autoComplete="new-email" // 🔥 Evita autocompletado no deseado
+                className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
+                required
+              />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <label className="text-sm">Contraseña</label>
+            <input
+              type="password"
+              name="newPassword"
+              value={formData.newPassword}
+              onChange={handleChange}
+              autoComplete="new-password" // 🔥 Evita autocompletado de contraseña
+              className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
+              required
+            />
+          </div>
+          <Button type="submit">Registrarse</Button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

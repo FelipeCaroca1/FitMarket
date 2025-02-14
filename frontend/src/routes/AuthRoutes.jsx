@@ -1,10 +1,12 @@
 import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import PropTypes from "prop-types";
 
 const AuthRoutes = ({ children }) => {
-  const isAuthenticated = false; // Esto se actualizará cuando implementemos autenticación
+  const { user } = useContext(AuthContext);
 
-  return isAuthenticated ? <Navigate to="/" /> : children;
+  return user ? <Navigate to="/Profile" /> : children;
 };
 
 AuthRoutes.propTypes = {
