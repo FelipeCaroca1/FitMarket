@@ -1,19 +1,16 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import Button from "../components/Button"; // Botón reutilizable
+import Button from "../components/Button";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(""); // Limpia el error al escribir
   };
 
   const handleSubmit = async (e) => {
@@ -21,9 +18,13 @@ const Login = () => {
     setError("");
 
     try {
-      await loginUser(formData);
-    } catch (error) {
-      setError(error.message);
+      const loginSuccess = await loginUser(formData);
+
+      if (!loginSuccess) {
+        setError("Correo o contraseña incorrectos. ¿No tienes cuenta? Regístrate.");
+      }
+    } catch {
+      setError("Ocurrió un error al intentar iniciar sesión.");
     }
   };
 
@@ -31,7 +32,8 @@ const Login = () => {
     <div className="w-full flex justify-center items-center px-4">
       <div className="bg-black/90 text-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
         <h2 className="text-2xl font-bold text-center mb-6">Iniciar Sesión</h2>
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div className="flex flex-col">
             <label className="text-sm">Correo Electrónico</label>
@@ -40,7 +42,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              autoComplete="new-email" // 🔥 Evita autocompletado
+              autoComplete="new-email"
               className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
               required
             />
@@ -52,13 +54,14 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              autoComplete="new-password" // 🔥 Evita autocompletado de contraseña
+              autoComplete="new-password"
               className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
               required
             />
           </div>
           <Button type="submit">Iniciar Sesión</Button>
         </form>
+
         <p className="text-center mt-4 text-sm">
           ¿No tienes cuenta?{" "}
           <Link to="/register" className="text-red-400 hover:text-red-500">
