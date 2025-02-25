@@ -28,9 +28,9 @@ const Register = () => {
   
     try {
       await registerUser({
-        name: formData.newName, // Cambia a "name"
-        email: formData.newEmail, // Cambia a "email"
-        password: formData.newPassword, // Cambia a "password"
+        name: formData.newName, 
+        email: formData.newEmail, 
+        password: formData.newPassword, 
       });
     } catch (error) {
       setError(error.message || "Error al registrar usuario");
@@ -52,7 +52,7 @@ const Register = () => {
                 name="newName"
                 value={formData.newName}
                 onChange={handleChange}
-                autoComplete="new-name" // 🔥 Evita autocompletado no deseado
+                autoComplete="new-name" 
                 className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
                 required
               />
@@ -64,7 +64,7 @@ const Register = () => {
                 name="newEmail"
                 value={formData.newEmail}
                 onChange={handleChange}
-                autoComplete="new-email" // 🔥 Evita autocompletado no deseado
+                autoComplete="new-email" 
                 className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
                 required
               />
@@ -77,7 +77,7 @@ const Register = () => {
               name="newPassword"
               value={formData.newPassword}
               onChange={handleChange}
-              autoComplete="new-password" // 🔥 Evita autocompletado de contraseña
+              autoComplete="new-password" 
               className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
               required
             />
