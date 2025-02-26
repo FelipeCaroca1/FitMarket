@@ -5,7 +5,7 @@ const Product = require("./src/models/Product");
 
 dotenv.config();
 
-// 🔥 Datos iniciales de productos con stock corregido
+
 const products = [
   {
     name: "Proteína Whey 1kg",
@@ -13,7 +13,7 @@ const products = [
     price: 29990,
     category: "Suplementos",
     stock: 50, 
-    image: "https://rolos.cl/wp-content/uploads/2023/03/640f317d783495553f1dd817-600x596.jpg",
+    image: "http://localhost:5000/images/Proteina.jpg",
   },
   {
     name: "Mancuernas Ajustables 10kg",
@@ -21,7 +21,7 @@ const products = [
     price: 49990,
     category: "Equipamiento",
     stock: 20, 
-    image: "https://i.imgur.com/JM8mHfh.jpg",
+    image: "http://localhost:5000/images/mancuernas.jpg",
   },
   {
     name: "Creatina Monohidratada 500g",
@@ -29,7 +29,7 @@ const products = [
     price: 19990,
     category: "Suplementos",
     stock: 30,
-    image: "https://i.imgur.com/uT6sZ9K.jpg",
+    image: "http://localhost:5000/images/Creatina.jpg",
   },
   {
     name: "Cuerda para Saltar Profesional",
@@ -37,7 +37,7 @@ const products = [
     price: 9990,
     category: "Accesorios",
     stock: 40, 
-    image: "https://i.imgur.com/Be0OwoN.jpg",
+    image: "http://localhost:5000/images/cuerda.jpg",
   },
   {
     name: "Colágeno Hidrolizado 300g",
@@ -45,7 +45,7 @@ const products = [
     price: 15990,
     category: "Salud",
     stock: 25, 
-    image: "https://i.imgur.com/vhklNXJ.jpg",
+    image: "http://localhost:5000/images/colageno.jpg",
   },
   {
     name: "Barra Olímpica 20kg",
@@ -53,7 +53,7 @@ const products = [
     price: 129990,
     category: "Equipamiento",
     stock: 10,
-    image: "https://i.imgur.com/0BjfOxP.jpg"
+    image: "http://localhost:5000/images/barraOlimpica.jpg"
   },
   {
     name: "Tobilleras con Peso 5kg",
@@ -61,7 +61,7 @@ const products = [
     price: 24990,
     category: "Accesorios",
     stock: 15,
-    image: "https://i.imgur.com/WPjtM0O.jpg"
+    image: "http://localhost:5000/images/tobilleras.jpg"
   },
   {
     name: "Zapatillas Running Pro",
@@ -69,7 +69,7 @@ const products = [
     price: 59990,
     category: "Ropa",
     stock: 20,
-    image: "https://i.imgur.com/P9HgKVs.jpg"
+    image: "http://localhost:5000/images/zapatillas.jpg"
   },
   {
     name: "Leggings Deportivos",
@@ -77,7 +77,7 @@ const products = [
     price: 19990,
     category: "Ropa",
     stock: 25,
-    image: "https://i.imgur.com/qvCnHy7.jpg"
+    image: "http://localhost:5000/images/leggins.jpg"
   },
   {
     name: "Camiseta Dry-Fit",
@@ -85,7 +85,7 @@ const products = [
     price: 14990,
     category: "Ropa",
     stock: 30,
-    image: "https://i.imgur.com/g2ZJPBc.jpg"
+    image: "http://localhost:5000/images/camiseta.jpg"
   },
   {
     name: "BCAA 2:1:1 300g",
@@ -93,7 +93,7 @@ const products = [
     price: 22990,
     category: "Suplementos",
     stock: 40,
-    image: "https://i.imgur.com/vhtYpQp.jpg"
+    image: "http://localhost:5000/images/bcaa.jpg"
   },
   {
     name: "Barra de Proteína (Caja de 12)",
@@ -101,7 +101,7 @@ const products = [
     price: 28990,
     category: "Alimentos",
     stock: 50,
-    image: "https://i.imgur.com/WLr6Nu6.jpg"
+    image: "http://localhost:5000/images/barrasProteina.jpg"
   },
   {
     name: "Pre-entreno Explosivo 400g",
@@ -109,7 +109,7 @@ const products = [
     price: 21990,
     category: "Suplementos",
     stock: 35,
-    image: "https://i.imgur.com/Cm5WfcE.jpg"
+    image: "http://localhost:5000/images/preEntreno.jpg"
   },
   {
     name: "Banda Elástica de Resistencia",
@@ -117,7 +117,7 @@ const products = [
     price: 12990,
     category: "Accesorios",
     stock: 30,
-    image: "https://i.imgur.com/Nx4L9GG.jpg"
+    image: "http://localhost:5000/images/bandaElastica.jpg"
   },
   {
     name: "Guantes de Gimnasio",
@@ -125,7 +125,7 @@ const products = [
     price: 9900,
     category: "Accesorios",
     stock: 20,
-    image: "https://i.imgur.com/mTWcb7W.jpg"
+    image: "http://localhost:5000/images/guantes.jpg"
   },
   {
     name: "Botella Deportiva 1L",
@@ -133,17 +133,17 @@ const products = [
     price: 7990,
     category: "Accesorios",
     stock: 40,
-    image: "https://i.imgur.com/tuBjZ0P.jpg"
+    image: "http://localhost:5000/images/botella.jpg"
   }
 ];
 
-// 🔥 Insertar productos en la base de datos
+
 const seedProducts = async () => {
   try {
     await connectDB();
-    await Product.deleteMany(); // 🔥 Borra todos los productos previos
+    await Product.deleteMany(); 
     await Product.insertMany(products);
-    console.log("✅ Productos insertados correctamente con stock");
+    console.log("✅ Productos insertados correctamente");
     process.exit();
   } catch (error) {
     console.error("❌ Error al insertar productos:", error);
@@ -151,5 +151,5 @@ const seedProducts = async () => {
   }
 };
 
-// Ejecutar la función
+
 seedProducts();

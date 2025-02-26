@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
 
       if (!response.ok) throw new Error("Error al eliminar la cuenta");
 
-      logoutUser(); // Cierra sesión después de eliminar la cuenta
+      logoutUser(); 
       navigate("/");
     } catch (error) {
       console.error("Error al eliminar la cuenta:", error);

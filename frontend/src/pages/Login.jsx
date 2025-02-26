@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // Limpia el error al escribir
+    setError(""); 
   };
 
   const handleSubmit = async (e) => {

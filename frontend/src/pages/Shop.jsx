@@ -12,7 +12,7 @@ const Shop = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <div key={product._id} className="bg-black/90 text-white p-4 rounded-lg shadow-lg">
-            <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded" />
+            <img src={product.image} alt={product.name} className="w-full h-40 object-contain rounded bg-white" />
             <h3 className="text-lg font-bold mt-2">{product.name}</h3>
             <p className="text-gray-400 text-sm">{product.description}</p>
             <p className="text-red-500 font-semibold mt-2">${product.price.toLocaleString()}</p>
