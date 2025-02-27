@@ -10,12 +10,10 @@ const ConfirmModal = ({ isOpen, title, message, onConfirm, onCancel }) => {
         <h3 className="text-xl font-semibold mb-4">{title}</h3>
         <p className="mb-6 text-gray-300">{message}</p>
         <div className="flex justify-end space-x-4">
-          <Button onClick={onCancel} className="bg-gray-500 hover:bg-gray-600">
+          <Button size="medium" onClick={onCancel} className="border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white">
             Cancelar
           </Button>
-          <Button onClick={onConfirm} className="bg-red-600 hover:bg-red-700">
-            Confirmar
-          </Button>
+          <Button size="medium" onClick={onConfirm}>Confirmar</Button>
         </div>
       </div>
     </div>

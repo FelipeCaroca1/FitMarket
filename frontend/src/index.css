@@ -15,3 +15,21 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 }
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Un fondo traslúcido */
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #960914, #666161); /* Degradado rojo */
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d32f2f, #ff4e50);
+}

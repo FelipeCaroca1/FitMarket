@@ -47,10 +47,8 @@ const Profile = () => {
         <p className="mt-2 text-gray-400">Correo: {user?.email || "No disponible"}</p>
 
         <div className="flex justify-center gap-4 mt-6">
-          <Button onClick={handleLogout} className="px-4 py-2 text-sm">
-            Cerrar Sesión
-          </Button>
-          <Button onClick={handleDeleteAccount} className="px-4 py-2 text-sm bg-red-600 hover:bg-red-700">
+          <Button size="medium" onClick={handleLogout}>Cerrar Sesión</Button>
+          <Button size="medium" onClick={handleDeleteAccount}>
             Eliminar Cuenta
           </Button>
         </div>
