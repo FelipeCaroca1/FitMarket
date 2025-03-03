@@ -4,9 +4,9 @@ import AuthContext from "../context/AuthContext";
 import PropTypes from "prop-types";
 
 const PrivateRoutes = ({ children }) => {
-  const { user } = useContext(AuthContext); // Obtiene el usuario autenticado
+  const { user } = useContext(AuthContext); 
 
-  return user ? children : <Navigate to="/login" />; // Si hay usuario, muestra la página, si no, redirige a login
+  return user ? children : <Navigate to="/login" />;
 };
 
 PrivateRoutes.propTypes = {

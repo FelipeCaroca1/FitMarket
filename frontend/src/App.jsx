@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile"; 
+import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
 import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
@@ -30,6 +31,14 @@ function App() {
           element={
             <PrivateRoutes>
               <Profile />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/cart" 
+          element={
+            <PrivateRoutes>
+              <Cart />
             </PrivateRoutes>
           }
         />

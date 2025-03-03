@@ -30,4 +30,5 @@ CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CartContext;
+export default CartContext; 
+

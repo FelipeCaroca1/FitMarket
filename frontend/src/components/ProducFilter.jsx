@@ -23,7 +23,7 @@ const ProductFilter = ({ onFilterChange }) => {
         id="categoryFilter"
         value={selectedCategory}
         onChange={handleCategoryChange}
-        className="p-2 border border-transparent rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-red-500 hover:ring-2 hover:ring-red-500 hover:border-red-500 hover:bg-gray-700 transition"
+        className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 hover:border-red-500 hover:bg-[#3a3a3a] transition"
       >
         {categories.map((category) => (
           <option key={category} value={category}>
