@@ -17,6 +17,14 @@ const products = [
       uso: "Mezclar una porción (30g) con 250ml de agua o leche después del entrenamiento.",
       beneficios: ["Favorece la recuperación muscular", "Aporta proteínas de alta calidad", "Bajo en grasas"],
       ingredientes: ["Proteína de suero de leche", "Lecitina de soya", "Aromatizantes naturales"],
+      tablaNutricional: {
+        porcion: "30g",
+        calorias: 120,
+        proteinas: "25g",
+        grasas: "2g",
+        carbohidratos: "3g",
+        azucares: "1g",
+      },
     },
   },
   {
@@ -42,6 +50,14 @@ const products = [
       uso: "Consumir 5g diarios disueltos en agua o jugo antes del entrenamiento.",
       beneficios: ["Incrementa la fuerza y potencia", "Mejora la recuperación post-entrenamiento"],
       ingredientes: ["Creatina monohidratada 100% pura"],
+      tablaNutricional: {
+        porcion: "5g",
+        calorias: 0,
+        proteinas: "0g",
+        grasas: "0g",
+        carbohidratos: "0g",
+        azucares: "0g",
+      },
     },
   },
   {
@@ -65,8 +81,24 @@ const products = [
     image: "http://localhost:5000/images/colageno.jpg",
     detalles: {
       uso: "Tomar 10g disueltos en agua una vez al día.",
-      beneficios: ["Fortalece articulaciones", "Mejora la elasticidad de la piel"],
-      ingredientes: ["Colágeno hidrolizado", "Vitamina C", "Saborizante natural"],
+      beneficios: [
+        "Fortalece articulaciones",
+        "Mejora la elasticidad de la piel"
+      ],
+      ingredientes: [
+        "Colágeno hidrolizado",
+        "Vitamina C",
+        "Saborizante natural"
+      ],
+      tablaNutricional: {
+        porcion: "10g",
+        calorias: 40,
+        proteinas: "9g",
+        grasas: "0g",
+        carbohidratos: "0g",
+        azucares: "0g",
+        sodio: "15mg"
+      },
     },
   },
   {
@@ -113,7 +145,7 @@ const products = [
     category: "Ropa",
     stock: 25,
     image: "http://localhost:5000/images/leggins.jpg",
-    tallas: ["XS, S, M, L, XL"],
+    tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       uso: "Usar durante entrenamientos o actividades deportivas.",
       beneficios: ["Ajuste cómodo", "Material elástico y transpirable"],
@@ -126,7 +158,7 @@ const products = [
     category: "Ropa",
     stock: 30,
     image: "http://localhost:5000/images/camiseta.jpg",
-    tallas: ["XS, S, M, L, XL"],
+    tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       uso: "Ideal para actividades físicas que requieren comodidad y ventilación.",
       beneficios: ["Evita la sudoración excesiva", "Tela liviana"],
@@ -141,8 +173,24 @@ const products = [
     image: "http://localhost:5000/images/bcaa.jpg",
     detalles: {
       uso: "Consumir 7g antes o durante el entrenamiento.",
-      beneficios: ["Reduce la fatiga", "Mejora la recuperación muscular"],
-      ingredientes: ["Leucina", "Isoleucina", "Valina"],
+      beneficios: [
+        "Reduce la fatiga",
+        "Mejora la recuperación muscular"
+      ],
+      ingredientes: [
+        "Leucina",
+        "Isoleucina",
+        "Valina"
+      ],
+      tablaNutricional: {
+        porcion: "7g",
+        calorias: 28,
+        proteinas: "6.5g",
+        grasas: "0g",
+        carbohidratos: "0.5g",
+        azucares: "0g",
+        sodio: "10mg"
+      },
     },
   },
   {
@@ -170,13 +218,30 @@ const products = [
     name: "Pre-entreno Explosivo 400g",
     description: "Suplemento pre-entreno con cafeína y beta-alanina para potenciar el rendimiento.",
     price: 21990,
-    category: "Suplementos",
+    "category": "Suplementos",
     stock: 35,
     image: "http://localhost:5000/images/preEntreno.jpg",
     detalles: {
       uso: "Consumir 10g con agua 30 minutos antes del entrenamiento.",
-      beneficios: ["Mayor energía", "Mejora la concentración"],
-      ingredientes: ["Cafeína", "Beta-alanina", "L-arginina"],
+      beneficios: [
+        "Mayor energía",
+        "Mejora la concentración"
+      ],
+      ingredientes: [
+        "Cafeína",
+        "Beta-alanina",
+        "L-arginina"
+      ],
+      tablaNutricional: {
+        porcion: "10g",
+        calorias: 35,
+        proteinas: "2g",
+        grasas: "0g",
+        carbohidratos: "8g",
+        azucares: "1g",
+        sodio: "50mg",
+        cafeina: "200mg"
+      },
     },
   },
   {
@@ -231,14 +296,14 @@ const products = [
       uso: "Tomar 1 cápsula dos veces al día con las comidas.",
       ingredientes: ["Aceite de pescado", "EPA", "DHA", "Vitamina E"],
       tablaNutricional: {
-        "porPorcion": "1 cápsula",
-        "calorias": 10,
-        "grasasTotales": "1g",
-        "grasasSaturadas": "0g",
-        "colesterol": "5mg",
-        "sodio": "0mg"
-      }
-    }
+        porcion: "1 cápsula",
+        calorias: 10,
+        grasasTotales: "1g",
+        grasasSaturadas: "0g",
+        colesterol: "5mg",
+        sodio: "0mg"
+      },
+    },
   },
   {
     name: "Multivitamínico Mujer",
@@ -248,597 +313,630 @@ const products = [
     stock: 40,
     image: "http://localhost:5000/images/multivitaminicoMujer.jpg",
     detalles: {
-      "beneficios": [
+      beneficios: [
         "Apoya la salud ósea y cardiovascular",
         "Aumenta la energía diaria",
         "Mejora la salud del cabello, piel y uñas"
       ],
-      "uso": "Tomar 1 comprimido al día después de la comida.",
-      "ingredientes": ["Vitamina A", "Vitamina C", "Calcio", "Hierro", "Ácido Fólico"]
-    }
+      uso: "Tomar 1 comprimido al día después de la comida.",
+      ingredientes: [
+        "Vitamina A",
+        "Vitamina C",
+        "Calcio",
+        "Hierro",
+        "Ácido Fólico"
+      ],
+      tablaNutricional: {
+        porcion: "1 comprimido",
+        calorias: 5,
+        proteinas: "0g",
+        grasas: "0g",
+        carbohidratos: "1g",
+        azucares: "0g",
+        vitaminaA: "900mcg",
+        vitaminaC: "80mg",
+        calcio: "300mg",
+        hierro: "18mg",
+        acidoFolico: "400mcg"
+      },
+    },
   },
   {
-    "name": "Yogurt Proteico 200g",
-    "description": "Yogurt con alto contenido de proteína y bajo en azúcares.",
-    "price": 2990,
-    "category": "Alimentos",
-    "stock": 50,
-    "image": "http://localhost:5000/images/yogurtProteico.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Yogurt Proteico 200g",
+    description: "Yogurt con alto contenido de proteína y bajo en azúcares.",
+    price: 2990,
+    category: "Alimentos",
+    stock: 50,
+    image: "http://localhost:5000/images/yogurtProteico.jpg",
+    detalles: {
+      beneficios: [
         "Favorece la recuperación muscular",
         "Ideal como snack saludable",
         "Fuente de calcio y probióticos"
       ],
-      "uso": "Consumir frío. Ideal para desayunos o colaciones.",
-      "ingredientes": ["Leche descremada", "Proteína de suero", "Cultivos lácticos"],
-      "tablaNutricional": {
-        "porPorcion": "200g",
-        "calorias": 120,
-        "proteinas": "20g",
-        "grasasTotales": "2g",
-        "carbohidratos": "10g",
-        "azucares": "3g",
-        "sodio": "80mg"
-      }
-    }
+      uso: "Consumir frío. Ideal para desayunos o colaciones.",
+      ingredientes: ["Leche descremada", "Proteína de suero", "Cultivos lácticos"],
+      tablaNutricional: {
+        porcion: "200g",
+        calorias: 120,
+        proteinas: "20g",
+        grasasTotales: "2g",
+        carbohidratos: "10g",
+        azucares: "3g",
+        sodio: "80mg"
+      },
+    },
   },
   {
-    "name": "Barra de Granola Fitness (Caja de 6)",
-    "description": "Barras energéticas con avena, frutos secos y bajo contenido de azúcar.",
-    "price": 9990,
-    "category": "Alimentos",
-    "stock": 45,
-    "image": "http://localhost:5000/images/barraGranola.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Barra de Granola Fitness (Caja de 6)",
+    description: "Barras energéticas con avena, frutos secos y bajo contenido de azúcar.",
+    price: 9990,
+    category: "Alimentos",
+    stock: 45,
+    image: "http://localhost:5000/images/barraGranola.jpg",
+    detalles: {
+      beneficios: [
         "Aporta energía sostenida",
         "Ideal para snacks pre y post entrenamiento",
         "Fuente de fibra y grasas saludables"
       ],
-      "uso": "Consumir antes o después del entrenamiento.",
-      "ingredientes": ["Avena", "Almendras", "Arándanos","Miel de caña", "Coco salvado de avena", "Arroz extruido"],
-      "tablaNutricional": {
-        "porPorcion": "1 barra (40g)",
-        "calorias": 150,
-        "proteinas": "5g",
-        "grasasTotales": "6g",
-        "carbohidratos": "20g",
-        "azucares": "5g",
-        "sodio": "50mg"
-      }
-    }
+      uso: "Consumir antes o después del entrenamiento.",
+      ingredientes: ["Avena", "Almendras", "Arándanos", "Miel de caña", "Coco salvado de avena", "Arroz extruido"],
+      tablaNutricional: {
+        porcion: "1 barra (40g)",
+        calorias: 150,
+        proteinas: "5g",
+        grasasTotales: "6g",
+        carbohidratos: "20g",
+        azucares: "5g",
+        sodio: "50mg"
+      },
+    },
   },
   {
-    "name": "Tights Deportivos Mujer",
-    "description": "Leggings con tejido de compresión y diseño transpirable.",
-    "price": 24990,
-    "category": "Ropa",
-    "stock": 30,
-    "image": "http://localhost:5000/images/tightsMujer.jpg",
-    tallas: ["XS, S, M, L, XL"],
-    "detalles": {
+    name: "Tights Deportivos Mujer",
+    description: "Leggings con tejido de compresión y diseño transpirable.",
+    price: 24990,
+    category: "Ropa",
+    stock: 30,
+    image: "http://localhost:5000/images/tightsMujer.jpg",
+    tallas: ["XS", "S", "M", "L", "XL"],
+    detalles: {
       "beneficios": [
         "Brindan soporte durante el ejercicio",
         "Tejido elástico para mayor movilidad",
         "Absorbe la humedad"
       ],
-      "uso": "Ideal para entrenamientos de alto y bajo impacto."
-    }
+      uso: "Ideal para entrenamientos de alto y bajo impacto."
+    },
   },
   {
-    "name": "Pesas Tobilleras 3kg",
-    "description": "Accesorio para aumentar la resistencia en ejercicios de pierna.",
-    "price": 15990,
-    "category": "Accesorios",
-    "stock": 25,
-    "image": "http://localhost:5000/images/pesasTobillo.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Pesas Tobilleras 3kg",
+    description: "Accesorio para aumentar la resistencia en ejercicios de pierna.",
+    price: 15990,
+    category: "Accesorios",
+    stock: 25,
+    image: "http://localhost:5000/images/pesasTobillo.jpg",
+    detalles: {
+      beneficios: [
         "Fortalece glúteos y piernas",
         "Mejora la resistencia muscular",
         "Fáciles de ajustar"
       ],
-      "uso": "Colocar alrededor de los tobillos durante el entrenamiento."
-    }
+      uso: "Colocar alrededor de los tobillos durante el entrenamiento."
+    },
   },
   {
-    "name": "Mat de Yoga Antideslizante",
-    "description": "Colchoneta con agarre superior para prácticas de yoga y pilates.",
-    "price": 19990,
-    "category": "Accesorios",
-    "stock": 40,
-    "image": "http://localhost:5000/images/matYoga.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Mat de Yoga Antideslizante",
+    description: "Colchoneta con agarre superior para prácticas de yoga y pilates.",
+    price: 19990,
+    category: "Accesorios",
+    stock: 40,
+    image: "http://localhost:5000/images/matYoga.jpg",
+    detalles: {
+      beneficios: [
         "Superficie antideslizante",
         "Fácil de transportar",
         "Amortiguación para proteger las articulaciones"
       ],
-      "uso": "Ideal para yoga, pilates o entrenamientos de piso."
-    }
+      uso: "Ideal para yoga, pilates o entrenamientos de piso."
+    },
   },
   {
-    "name": "Shaker 600ml",
-    "description": "Botella mezcladora con compartimento para suplementos.",
-    "price": 6990,
-    "category": "Accesorios",
-    "stock": 50,
-    "image": "http://localhost:5000/images/shaker.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Shaker 600ml",
+    description: "Botella mezcladora con compartimento para suplementos.",
+    price: 6990,
+    category: "Accesorios",
+    stock: 50,
+    image: "http://localhost:5000/images/shaker.jpg",
+    detalles: {
+      beneficios: [
         "Facilita la mezcla de proteínas y preentrenos",
         "Libre de BPA",
         "Apto para lavavajillas"
       ],
-      "uso": "Agregar suplemento, agua y agitar para mezclar."
-    }
+      uso: "Agregar suplemento, agua y agitar para mezclar."
+    },
   },
   {
-    "name": "Sujetador Deportivo Mujer",
-    "description": "Sostén de alto soporte para entrenamientos intensos.",
-    "price": 18990,
-    "category": "Ropa",
-    "stock": 20,
-    "image": "http://localhost:5000/images/sujetadorDeportivo.jpg",
-    tallas: ["XS, S, M, L, XL"],
-    "detalles": {
-      "beneficios": [
+    name: "Sujetador Deportivo Mujer",
+    description: "Sostén de alto soporte para entrenamientos intensos.",
+    price: 18990,
+    category: "Ropa",
+    stock: 20,
+    image: "http://localhost:5000/images/sujetadorDeportivo.jpg",
+    tallas: ["XS", "S", "M", "L", "XL"],
+    detalles: {
+      beneficios: [
         "Alto soporte y comodidad",
         "Tejido transpirable",
         "Diseño sin costuras para evitar irritaciones"
       ],
-      "uso": "Recomendado para actividades de alto impacto."
-    }
+      uso: "Recomendado para actividades de alto impacto."
+    },
   },
   {
-    "name": "Aceite de Coco Orgánico 500ml",
-    "description": "Aceite multifuncional ideal para cocinar y cuidado personal.",
-    "price": 7990,
-    "category": "Alimentos",
-    "stock": 25,
-    "image": "http://localhost:5000/images/aceiteCoco.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Aceite de Coco Orgánico 500ml",
+    description: "Aceite multifuncional ideal para cocinar y cuidado personal.",
+    price: 7990,
+    category: "Alimentos",
+    stock: 25,
+    image: "http://localhost:5000/images/aceiteCoco.jpg",
+    detalles: {
+      beneficios: [
         "Ideal para cocinar a altas temperaturas",
         "Hidrata la piel y el cabello",
         "Fuente de grasas saludables"
       ],
-      "uso": "Usar en cocina o aplicar directamente en la piel.",
-      "ingredientes": ["Aceite de coco 100% orgánico"],
-      "tablaNutricional": {
-        "porPorcion": "1 cucharada (15ml)",
-        "calorias": 130,
-        "grasasTotales": "14g",
-        "grasasSaturadas": "12g",
-        "carbohidratos": "0g",
-        "proteinas": "0g",
-        "sodio": "0mg"
-      }
-    }
+      uso: "Usar en cocina o aplicar directamente en la piel.",
+      ingredientes: ["Aceite de coco 100% orgánico"],
+      tablaNutricional: {
+        porcion: "1 cucharada (15ml)",
+        calorias: 130,
+        grasasTotales: "14g",
+        grasasSaturadas: "12g",
+        carbohidratos: "0g",
+        proteinas: "0g",
+        sodio: "0mg"
+      },
+    },
   },
   {
-    "name": "Top Deportivo Mujer",
-    "description": "Top de entrenamiento con ajuste perfecto y secado rápido.",
-    "price": 17990,
-    "category": "Ropa",
-    "stock": 28,
-    "image": "http://localhost:5000/images/topDeportivo.jpg",
-    tallas: ["XS, S, M, L, XL"],
-    "detalles": {
-      "beneficios": [
+    name: "Top Deportivo Mujer",
+    description: "Top de entrenamiento con ajuste perfecto y secado rápido.",
+    price: 17990,
+    category: "Ropa",
+    stock: 28,
+    image: "http://localhost:5000/images/topDeportivo.jpg",
+    tallas: ["XS", "S", "M", "L", "XL"],
+    detalles: {
+      beneficios: [
         "Ajuste cómodo",
         "Tejido transpirable",
         "Ideal para entrenamientos de alto impacto"
       ],
-      "uso": "Utilizar durante actividades deportivas o rutinas de gimnasio."
-    }
+      uso: "Utilizar durante actividades deportivas o rutinas de gimnasio."
+    },
   },
   {
-    "name": "Toalla Deportiva Microfibra",
-    "description": "Toalla absorbente de secado rápido ideal para entrenamientos.",
-    "price": 6990,
-    "category": "Accesorios",
-    "stock": 35,
-    "image": "http://localhost:5000/images/toallaDeportiva.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Toalla Deportiva Microfibra",
+    description: "Toalla absorbente de secado rápido ideal para entrenamientos.",
+    price: 6990,
+    category: "Accesorios",
+    stock: 35,
+    image: "http://localhost:5000/images/toallaDeportiva.jpg",
+    detalles: {
+      beneficios: [
         "Alta capacidad de absorción",
         "Compacta y ligera",
         "Secado rápido"
       ],
-      "uso": "Ideal para el gimnasio, yoga o actividades al aire libre."
-    }
+      uso: "Ideal para el gimnasio, yoga o actividades al aire libre."
+    },
   },
   {
-    "name": "Bebida Isotónica 500ml",
-    "description": "Bebida isotónica que contiene 10 g de proteína. Ideal para deportistas.",
-    "price": 2490,
-    "category": "Alimentos",
-    "stock": 60,
-    "image": "http://localhost:5000/images/bebidaIsotonica.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Bebida Isotónica 500ml",
+    description: "Bebida isotónica que contiene 10 g de proteína. Ideal para deportistas.",
+    price: 2490,
+    category: "Alimentos",
+    stock: 60,
+    image: "http://localhost:5000/images/bebidaIsotonica.jpg",
+    detalles: {
+      beneficios: [
         "Rehidrata rápidamente",
         "Rico en electrolitos",
         "Mejora la resistencia"
       ],
-      "uso": "Consumir durante o después de la actividad física.",
-      "tablaNutricional": {
-        "porPorcion": "500ml",
-        "calorias": 45,
-        "proteínas": 10,
-        "carbohidratos": "0",
-        "azucares": "18g",
-        "sodio": "325mg",
-        "potasio": "75mg"
-      }
-    }
+      uso: "Consumir durante o después de la actividad física.",
+      tablaNutricional: {
+        porcion: "500ml",
+        calorias: 45,
+        proteínas: 10,
+        carbohidratos: "0",
+        azucares: "18g",
+        sodio: "325mg",
+        potasio: "75mg"
+      },
+    },
   },
   {
-    "name": "Muslera de Compresión",
-    "description": "Accesorio para mejorar la circulación y soporte muscular en el muslo.",
-    "price": 14990,
-    "category": "Accesorios",
-    "stock": 30,
-    "image": "http://localhost:5000/images/muslera.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Muslera de Compresión",
+    description: "Accesorio para mejorar la circulación y soporte muscular en el muslo.",
+    price: 14990,
+    category: "Accesorios",
+    stock: 30,
+    image: "http://localhost:5000/images/muslera.jpg",
+    detalles: {
+      beneficios: [
         "Reduce la fatiga muscular",
         "Mejora la circulación sanguínea",
         "Ideal para entrenamientos prolongados"
       ],
-      "uso": "Colocar alrededor del muslo antes de la actividad física."
-    }
+      uso: "Colocar alrededor del muslo antes de la actividad física."
+    },
   },
   {
-    "name": "Cinturón de Levantamiento",
-    "description": "Proporciona soporte lumbar para levantamiento de pesas.",
-    "price": 19990,
-    "category": "Accesorios",
-    "stock": 15,
-    "image": "http://localhost:5000/images/cinturonLevantamiento.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Cinturón de Levantamiento",
+    description: "Proporciona soporte lumbar para levantamiento de pesas.",
+    price: 19990,
+    category: "Accesorios",
+    stock: 15,
+    image: "http://localhost:5000/images/cinturonLevantamiento.jpg",
+    detalles: {
+      beneficios: [
         "Previene lesiones lumbares",
         "Mejora la postura al levantar peso",
         "Ajuste cómodo y seguro"
       ],
-      "uso": "Utilizar durante ejercicios de carga pesada."
-    }
+      uso: "Utilizar durante ejercicios de carga pesada."
+    },
   },
   {
-    "name": "Proteína Isolate 1kg",
-    "description": "Proteína de rápida absorción para recuperación muscular.",
-    "price": 34990,
-    "category": "Suplementos",
-    "stock": 25,
-    "image": "http://localhost:5000/images/proteinaIsolate.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Proteína Isolate 1kg",
+    description: "Proteína de rápida absorción para recuperación muscular.",
+    price: 34990,
+    category: "Suplementos",
+    stock: 25,
+    image: "http://localhost:5000/images/proteinaIsolate.jpg",
+    detalles: {
+      beneficios: [
         "Alta concentración de proteína",
         "Bajo en carbohidratos",
         "Ideal para después del entrenamiento"
       ],
-      "uso": "Mezclar 30g con 250ml de agua o leche.",
-      "tablaNutricional": {
-        "porPorcion": "30g",
-        "calorias": 110,
-        "proteinas": "27g",
-        "carbohidratos": "1g",
-        "grasasTotales": "1g"
-      }
-    }
+      uso: "Mezclar 30g con 250ml de agua o leche.",
+      tablaNutricional: {
+        porcion: "30g",
+        calorias: 110,
+        proteinas: "27g",
+        carbohidratos: "1g",
+        grasasTotales: "1g"
+      },
+    },
   },
   {
-    "name": "Vinagre de Manzana Orgánico 500ml",
-    "description": "Apoya la digestión y ayuda a controlar el apetito.",
-    "price": 7990,
-    "category": "Salud",
-    "stock": 30,
-    "image": "http://localhost:5000/images/vinagreManzana.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Vinagre de Manzana Orgánico 500ml",
+    description: "Apoya la digestión y ayuda a controlar el apetito.",
+    price: 7990,
+    category: "Salud",
+    stock: 30,
+    image: "http://localhost:5000/images/vinagreManzana.jpg",
+    detalles: {
+      uso: "Diluir 1 cucharada en un vaso de agua antes de las comidas.",
+      beneficios: [
         "Mejora la digestión",
         "Regula los niveles de azúcar en sangre",
         "Apoya la pérdida de peso"
       ],
-      "uso": "Diluir 1 cucharada en un vaso de agua antes de las comidas.",
-      "ingredientes": ["Vinagre de manzana orgánico", "Agua"],
-      "tablaNutricional": {
-        "porPorcion": "15ml",
-        "calorias": 0,
-        "carbohidratos": "0g",
-        "azucares": "0g",
-        "sodio": "0mg"
-      }
-    }
+      ingredientes: [
+        "Vinagre de manzana orgánico",
+        "Agua"
+      ],
+      tablaNutricional: {
+        porcion: "15ml",
+        calorias: 0,
+        proteinas: "0g",
+        grasas: "0g",
+        carbohidratos: "0g",
+        azucares: "0g",
+        sodio: "0mg"
+      },
+    },
   },
   {
-    "name": "Galletas Proteicas (Caja de 12)",
-    "description": "Snack saludable con alto contenido de proteínas.",
-    "price": 14990,
-    "category": "Alimentos",
-    "stock": 40,
-    "image": "http://localhost:5000/images/galletasProteicas.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Galletas Proteicas (Caja de 12)",
+    description: "Snack saludable con alto contenido de proteínas.",
+    price: 14990,
+    category: "Alimentos",
+    stock: 40,
+    image: "http://localhost:5000/images/galletasProteicas.jpg",
+    detalles: {
+      beneficios: [
         "Fuente de proteínas para recuperación muscular",
         "Bajo en azúcares añadidos",
         "Ideal como colación post entrenamiento"
       ],
-      "uso": "Consumir como snack durante el día.",
-      "ingredientes": ["Harina de avena", "Proteína de suero", "Stevia"],
-      "tablaNutricional": {
-        "porPorcion": "1 galleta (50g)",
-        "calorias": 180,
-        "proteinas": "15g",
-        "grasasTotales": "6g",
-        "carbohidratos": "20g",
-        "azucares": "3g",
-        "sodio": "100mg"
-      }
-    }
+      uso: "Consumir como snack durante el día.",
+      ingredientes: ["Harina de avena", "Proteína de suero", "Stevia"],
+      tablaNutricional: {
+        porcion: "1 galleta (50g)",
+        calorias: 180,
+        proteinas: "15g",
+        grasasTotales: "6g",
+        carbohidratos: "20g",
+        azucares: "3g",
+        sodio: "100mg"
+      },
+    },
   },
   {
-    "name": "Camiseta Oversize Hombre",
-    "description": "Camiseta cómoda para entrenamientos o uso diario.",
-    "price": 16990,
-    "category": "Ropa",
-    "stock": 25,
-    "image": "http://localhost:5000/images/camisetaHombre.jpg",
-    "tallas": ["S", "M", "L", "XL", "XXL"],
-    "detalles": {
-      "beneficios": [
+    name: "Camiseta Oversize Hombre",
+    description: "Camiseta cómoda para entrenamientos o uso diario.",
+    price: 16990,
+    category: "Ropa",
+    stock: 25,
+    image: "http://localhost:5000/images/camisetaHombre.jpg",
+    tallas: ["S", "M", "L", "XL", "XXL"],
+    detalles: {
+      beneficios: [
         "Tela transpirable",
         "Diseño holgado para mayor comodidad",
         "Secado rápido"
       ],
-      "uso": "Ideal para entrenamientos o uso casual."
-    }
+      uso: "Ideal para entrenamientos o uso casual."
+    },
   },
   {
-    "name": "Proteína Vegetal 1kg",
-    "description": "Alternativa vegana con proteínas de arveja y arroz.",
-    "price": 31990,
-    "category": "Suplementos",
-    "stock": 20,
-    "image": "http://localhost:5000/images/proteinaVegetal.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Proteína Vegetal 1kg",
+    description: "Alternativa vegana con proteínas de arveja y arroz.",
+    price: 31990,
+    category: "Suplementos",
+    stock: 20,
+    image: "http://localhost:5000/images/proteinaVegetal.jpg",
+    detalles: {
+      beneficios: [
         "Apta para veganos",
         "Alto contenido proteico",
         "Favorece la recuperación muscular"
       ],
-      "uso": "Mezclar 30g con agua o leche vegetal.",
-      "ingredientes": ["Proteína de arveja", "Proteína de arroz", "Cacao natural"],
-      "tablaNutricional": {
-        "porPorcion": "30g",
-        "calorias": 120,
-        "proteinas": "24g",
-        "grasasTotales": "2g",
-        "carbohidratos": "4g",
-        "sodio": "150mg"
-      }
-    }
+      uso: "Mezclar 30g con agua o leche vegetal.",
+      ingredientes: ["Proteína de arveja", "Proteína de arroz", "Cacao natural"],
+      tablaNutricional: {
+        porcion: "30g",
+        calorias: 120,
+        proteinas: "24g",
+        grasasTotales: "2g",
+        carbohidratos: "4g",
+        sodio: "150mg"
+      },
+    },
   },
   {
-    "name": "Rueda Abdominal con Rodillera",
-    "description": "Fortalece el core y mejora la estabilidad.",
-    "price": 18990,
-    "category": "Equipamiento",
-    "stock": 18,
-    "image": "http://localhost:5000/images/ruedaAbdominal.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Rueda Abdominal con Rodillera",
+    description: "Fortalece el core y mejora la estabilidad.",
+    price: 18990,
+    category: "Equipamiento",
+    stock: 18,
+    image: "http://localhost:5000/images/ruedaAbdominal.jpg",
+    detalles: {
+      beneficios: [
         "Tonifica abdomen y espalda",
         "Incluye rodillera para mayor comodidad",
         "Compacta y fácil de usar"
       ],
-      "uso": "Usar sobre superficie plana con movimientos controlados."
-    }
+      uso: "Usar sobre superficie plana con movimientos controlados."
+    },
   },
   {
-    "name": "Pre-entreno Natural 400g",
-    "description": "Energía limpia sin estimulantes artificiales.",
-    "price": 20990,
-    "category": "Suplementos",
-    "stock": 25,
-    "image": "http://localhost:5000/images/preEntrenoNatural.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Pre-entreno Natural 400g",
+    description: "Energía limpia sin estimulantes artificiales.",
+    price: 20990,
+    category: "Suplementos",
+    stock: 25,
+    image: "http://localhost:5000/images/preEntrenoNatural.jpg",
+    detalles: {
+      uso: "Mezclar 10g con 250ml de agua antes del entrenamiento.",
+      beneficios: [
         "Mejora la resistencia",
         "Sin cafeína ni taquicardias",
         "Aumenta el enfoque durante el entrenamiento"
       ],
-      "uso": "Mezclar 10g con 250ml de agua antes del entrenamiento.",
-      "ingredientes": ["Beta-Alanina", "Citrulina", "Extracto de remolacha"],
-      "tablaNutricional": {
-        "porPorcion": "10g",
-        "calorias": 20,
-        "carbohidratos": "3g",
-        "sodio": "50mg"
-      }
-    }
+      ingredientes: [
+        "Beta-Alanina",
+        "Citrulina",
+        "Extracto de remolacha"
+      ],
+      tablaNutricional: {
+        porcion: "10g",
+        calorias: 20,
+        proteinas: "0g",
+        grasasTotales: "0g",
+        carbohidratos: "3g",
+        azucares: "0g",
+        sodio: "50mg"
+      },
+    },
   },
   {
-    "name": "Bandas de Resistencia (Set de 5)",
-    "description": "Bandas de diferentes resistencias para entrenamiento funcional.",
-    "price": 14990,
-    "category": "Accesorios",
-    "stock": 30,
-    "image": "http://localhost:5000/images/bandasResistencia.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Bandas de Resistencia (Set de 5)",
+    description: "Bandas de diferentes resistencias para entrenamiento funcional.",
+    price: 14990,
+    category: "Accesorios",
+    stock: 30,
+    image: "http://localhost:5000/images/bandasResistencia.jpg",
+    detalles: {
+      beneficios: [
         "Fortalece todo el cuerpo",
         "Ideales para calistenia y rehabilitación",
         "Fáciles de transportar"
       ],
-      "uso": "Utilizar según nivel de resistencia deseado."
-    }
+      uso: "Utilizar según nivel de resistencia deseado."
+    },
   },
   {
-    "name": "Jengibre en Polvo 200g",
-    "description": "Superalimento que apoya la digestión y reduce la inflamación.",
-    "price": 5990,
-    "category": "Alimentos",
-    "stock": 50,
-    "image": "http://localhost:5000/images/jengibrePolvo.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Jengibre en Polvo 200g",
+    description: "Superalimento que apoya la digestión y reduce la inflamación.",
+    price: 5990,
+    category: "Alimentos",
+    stock: 50,
+    image: "http://localhost:5000/images/jengibrePolvo.jpg",
+    detalles: {
+      beneficios: [
         "Favorece la digestión",
         "Propiedades antiinflamatorias",
         "Aumenta la inmunidad"
       ],
-      "uso": "Agregar 1 cucharadita a batidos o comidas.",
-      "ingredientes": ["Jengibre 100% natural"],
-      "tablaNutricional": {
-        "porPorcion": "5g",
-        "calorias": 20,
-        "carbohidratos": "4g",
-        "azucares": "0g",
-        "proteinas": "0g"
-      }
-    }
+      uso: "Agregar 1 cucharadita a batidos o comidas.",
+      ingredientes: ["Jengibre 100% natural"],
+      tablaNutricional: {
+        porcion: "5g",
+        calorias: 20,
+        carbohidratos: "4g",
+        azucares: "0g",
+        proteinas: "0g"
+      },
+    },
   },
   {
-    "name": "Rodillera Deportiva",
-    "description": "Brinda soporte durante entrenamientos intensos.",
-    "price": 13990,
-    "category": "Accesorios",
-    "stock": 20,
-    "image": "http://localhost:5000/images/rodillera.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Rodillera Deportiva",
+    description: "Brinda soporte durante entrenamientos intensos.",
+    price: 13990,
+    category: "Accesorios",
+    stock: 20,
+    image: "http://localhost:5000/images/rodillera.jpg",
+    detalles: {
+      beneficios: [
         "Reduce riesgo de lesiones",
         "Mejora la estabilidad",
         "Cómoda para largas sesiones"
       ],
-      "uso": "Colocar alrededor de la rodilla antes del entrenamiento."
-    }
+      uso: "Colocar alrededor de la rodilla antes del entrenamiento."
+    },
   },
   {
-    "name": "Leggings Mujer de Cintura Alta",
-    "description": "Leggings con soporte abdominal y tela elástica.",
-    "price": 22990,
-    "category": "Ropa",
-    "stock": 22,
-    "image": "http://localhost:5000/images/leggingsMujer.jpg",
-    "tallas": ["S", "M", "L", "XL", "XXL"],
-    "detalles": {
-      "beneficios": [
+    name: "Leggings Mujer de Cintura Alta",
+    description: "Leggings con soporte abdominal y tela elástica.",
+    price: 22990,
+    category: "Ropa",
+    stock: 22,
+    image: "http://localhost:5000/images/leggingsMujer.jpg",
+    tallas: ["S", "M", "L", "XL", "XXL"],
+    detalles: {
+      beneficios: [
         "Control de abdomen",
         "No se transparenta",
         "Ideal para cualquier tipo de entrenamiento"
       ],
-      "uso": "Perfecto para correr, yoga y gimnasio."
-    }
+      uso: "Perfecto para correr, yoga y gimnasio."
+    },
   },
   {
-    "name": "Café Verde 250g",
-    "description": "Suplemento natural que ayuda a la quema de grasa.",
-    "price": 10990,
-    "category": "Salud",
-    "stock": 30,
-    "image": "http://localhost:5000/images/cafeVerde.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Café Verde 250g",
+    description: "Suplemento natural que ayuda a la quema de grasa.",
+    price: 10990,
+    category: "Salud",
+    stock: 30,
+    image: "http://localhost:5000/images/cafeVerde.jpg",
+    detalles: {
+      uso: "Consumir 1 taza al día por la mañana.",
+      beneficios: [
         "Aumenta el metabolismo",
         "Fuente de antioxidantes",
         "Apoya la pérdida de peso"
       ],
-      "uso": "Consumir 1 taza al día por la mañana.",
-      "ingredientes": ["Café verde molido"],
-      "tablaNutricional": {
-        "porPorcion": "10g",
-        "calorias": 30,
-        "carbohidratos": "5g",
-        "proteinas": "1g"
-      }
-    }
+      ingredientes: ["Café verde molido"],
+      tablaNutricional: {
+        porcion: "10g",
+        calorias: 30,
+        carbohidratos: "5g",
+        proteinas: "1g",
+        grasas: "0g",
+        azucares: "0g"
+      },
+    },
   },
   {
-    "name": "Colchoneta Plegable Fitness",
-    "description": "Ideal para entrenamientos en casa y gimnasia.",
-    "price": 24990,
-    "category": "Equipamiento",
-    "stock": 15,
-    "image": "http://localhost:5000/images/colchonetaFitness.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Colchoneta Plegable Fitness",
+    description: "Ideal para entrenamientos en casa y gimnasia.",
+    price: 24990,
+    category: "Equipamiento",
+    stock: 15,
+    image: "http://localhost:5000/images/colchonetaFitness.jpg",
+    detalles: {
+      beneficios: [
         "Fácil de transportar",
         "Amortiguación óptima",
         "Superficie antideslizante"
       ],
-      "uso": "Usar en entrenamientos de piso y yoga."
-    }
+      uso: "Usar en entrenamientos de piso y yoga."
+    },
   },
   {
-    "name": "Bolso Deportivo Unisex",
-    "description": "Espacioso y con compartimentos para ropa y accesorios.",
-    "price": 19990,
-    "category": "Accesorios",
-    "stock": 18,
-    "image": "http://localhost:5000/images/bolsoDeportivo.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Bolso Deportivo Unisex",
+    description: "Espacioso y con compartimentos para ropa y accesorios.",
+    price: 19990,
+    category: "Accesorios",
+    stock: 18,
+    image: "http://localhost:5000/images/bolsoDeportivo.jpg",
+    detalles: {
+      beneficios: [
         "Resistente al agua",
         "Ideal para llevar al gimnasio",
         "Correa ajustable"
       ],
-      "uso": "Transportar equipo deportivo y ropa."
-    }
+      uso: "Transportar equipo deportivo y ropa."
+    },
   },
   {
-    "name": "Cintillo Deportivo Absorbente",
-    "description": "Cintillo que absorbe el sudor y se ajusta cómodamente.",
-    "price": 5990,
-    "category": "Accesorios",
-    "stock": 40,
-    "image": "http://localhost:5000/images/cintillo.jpg",
-    "detalles": {
-      "beneficios": [
+    name: "Cintillo Deportivo Absorbente",
+    description: "Cintillo que absorbe el sudor y se ajusta cómodamente.",
+    price: 5990,
+    category: "Accesorios",
+    stock: 40,
+    image: "http://localhost:5000/images/cintillo.jpg",
+    detalles: {
+      beneficios: [
         "Evita que el sudor llegue a los ojos",
         "Ligero y cómodo",
         "Lavable y reutilizable"
       ],
-      "uso": "Usar durante entrenamientos o actividades al aire libre."
-    }
+      uso: "Usar durante entrenamientos o actividades al aire libre."
+    },
   },
   {
-    "name": "Short Deportivo Hombre",
-    "description": "Short ligero con tecnología de secado rápido y bolsillos laterales.",
-    "price": 17990,
-    "category": "Ropa",
-    "stock": 18,
-    "image": "http://localhost:5000/images/shortHombre.jpg",
-    "tallas": ["S", "M", "L", "XL", "XXL"],
-    "detalles": {
-      "beneficios": [
+    name: "Short Deportivo Hombre",
+    description: "Short ligero con tecnología de secado rápido y bolsillos laterales.",
+    price: 17990,
+    category: "Ropa",
+    stock: 18,
+    image: "http://localhost:5000/images/shortHombre.jpg",
+    tallas: ["S", "M", "L", "XL", "XXL"],
+    detalles: {
+      beneficios: [
         "Secado rápido",
         "Ligero y cómodo",
         "Bolsillos con cierre"
       ],
-      "uso": "Ideal para correr, entrenar y uso diario."
-    }
+      uso: "Ideal para correr, entrenar y uso diario."
+    },
   },
   {
-    "name": "Short Deportivo Mujer",
-    "description": "Short medio muslo con tecnologia de secado rapido y bolsillos laterales",
-    "price": 16990,
-    "category": "Ropa",
-    "stock": 20,
-    "image": "http://localhost:5000/images/shortMujer.jpg",
-    "tallas": ["XS", "S", "M", "L"],
-    "detalles": {
-      "beneficios": [
+    name: "Short Deportivo Mujer",
+    description: "Short medio muslo con tecnologia de secado rapido y bolsillos laterales",
+    price: 16990,
+    category: "Ropa",
+    stock: 20,
+    image: "http://localhost:5000/images/shortMujer.jpg",
+    tallas: ["XS", "S", "M", "L"],
+    detalles: {
+      beneficios: [
         "Secado rápido",
         "Tela elástica y transpirable",
         "Diseño cómodo y moderno"
       ],
-      "uso": "Perfecto para correr, gimnasio y uso diario."
-    }
-  }
+      uso: "Perfecto para correr, gimnasio y uso diario."
+    },
+  },
 ];
 
 const seedProducts = async () => {

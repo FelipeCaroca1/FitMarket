@@ -1,13 +1,26 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 
 const ProductDetailModal = ({ product, isOpen, onClose }) => {
+  const [selectedSize, setSelectedSize] = useState("");
+
   if (!isOpen || !product) return null;
+
+  // Asegurarnos de que las tallas sean un array válido
+  const availableSizes = Array.isArray(product.tallas)
+    ? product.tallas
+    : typeof product.tallas === "string"
+    ? product.tallas.split(", ")
+    : [];
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4">
       <div className="bg-background text-white p-6 rounded-lg shadow-lg max-w-4xl w-full h-[85vh] flex flex-col relative">
-
         <button
           className="absolute top-3 right-3 bg-background p-2 rounded-full hover:bg-red-500 transition-all z-50"
           onClick={onClose}
@@ -16,13 +29,10 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
         </button>
 
         <div className="flex flex-col lg:flex-row flex-grow overflow-hidden">
-          
-          {/* Imagen del producto */}
           <div className="w-full lg:w-1/2 flex justify-center items-center bg-white rounded-md p-4">
             <img src={product.image} alt={product.name} className="w-full h-auto object-contain" />
           </div>
 
-          {/* Contenido con scroll */}
           <div className="w-full lg:w-1/2 p-4 max-h-[70vh] overflow-y-auto modal-content">
             <h2 className="text-2xl font-bold text-red-500">{product.name}</h2>
             <p className="text-gray-400 mt-2">{product.description}</p>
@@ -72,26 +82,33 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
               </div>
             )}
 
-            {product.tallas?.length > 0 && (
+            {availableSizes.length > 0 && (
               <div className="mt-4">
-                <h3 className="text-lg font-semibold text-red-500">Tallas Disponibles:</h3>
-                <p className="text-gray-400">{product.tallas.join(", ")}</p>
+                <h3 className="text-lg font-semibold text-red-500">Selecciona tu talla:</h3>
+                <select
+                  value={selectedSize || availableSizes[0]}
+                  onChange={handleSizeChange}
+                  className="w-full p-2 mt-2 border border-transparent rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-red-500 hover:ring-2 hover:ring-red-500 hover:border-red-500 hover:bg-gray-700 transition"
+                >
+                  {availableSizes.map((size) => (
+                    <option key={size} value={size}>{size}</option>
+                  ))}
+                </select>
               </div>
             )}
           </div>
         </div>
 
-        {/* Sección de precio y botón de agregar al carrito */}
         <div className="mt-4 flex justify-between items-center border-t border-gray-700 pt-4">
           <p className="text-red-500 font-bold text-xl">${product.price.toLocaleString()}</p>
-          <Button size="medium" className="hover:bg-red-700">Agregar al Carrito</Button>
+          <Button size="medium" className="hover:bg-red-700">
+            Agregar al Carrito {selectedSize && `(Talla: ${selectedSize})`}
+          </Button>
         </div>
       </div>
     </div>
   );
 };
-
-
 
 ProductDetailModal.propTypes = {
   product: PropTypes.shape({
@@ -111,12 +128,14 @@ ProductDetailModal.propTypes = {
         azucares: PropTypes.string,
       }),
     }),
-    tallas: PropTypes.arrayOf(PropTypes.string),
+    tallas: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.string,
+    ]),
     price: PropTypes.number.isRequired,
   }),
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
-
 
 export default ProductDetailModal;

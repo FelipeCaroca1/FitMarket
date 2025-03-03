@@ -2,11 +2,13 @@ import { useState } from "react";
 import useProducts from "../hooks/useProduct";
 import ProductDetailModal from "../components/ProductDetailModal";
 import Button from "../components/Button";
+import ProductFilter from "../components/ProducFilter";
 
 const Shop = () => {
   const { products, loading, error } = useProducts();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filteredCategory, setFilteredCategory] = useState("Todos");
 
   const openModal = async (productId) => {
     try {
@@ -27,6 +29,14 @@ const Shop = () => {
     setSelectedProduct(null);
   };
 
+  const handleFilterChange = (category) => {
+    setFilteredCategory(category);
+  };
+
+  const filteredProducts = filteredCategory === "Todos" 
+    ? products 
+    : products.filter(product => product.category === filteredCategory);
+
   if (loading) return <p className="text-center text-white">Cargando productos...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 
@@ -37,8 +47,11 @@ const Shop = () => {
           Catálogo de Productos
         </h2>
       </div>
+      
+      <ProductFilter onFilterChange={handleFilterChange} />
+      
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div key={product._id} className="bg-black/90 text-white p-4 rounded-lg shadow-lg flex flex-col justify-between">
             <img
               src={product.image}
