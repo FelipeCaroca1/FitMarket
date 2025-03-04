@@ -33,8 +33,8 @@ const Shop = () => {
     setFilteredCategory(category);
   };
 
-  const filteredProducts = filteredCategory === "Todos" 
-    ? products 
+  const filteredProducts = filteredCategory === "Todos"
+    ? products
     : products.filter(product => product.category === filteredCategory);
 
   if (loading) return <p className="text-center text-white">Cargando productos...</p>;
@@ -47,9 +47,9 @@ const Shop = () => {
           Catálogo de Productos
         </h2>
       </div>
-      
+
       <ProductFilter onFilterChange={handleFilterChange} />
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
           <div key={product._id} className="bg-black/90 text-white p-4 rounded-lg shadow-lg flex flex-col justify-between">
@@ -62,8 +62,11 @@ const Shop = () => {
               <h3 className="text-lg font-bold mt-2">{product.name}</h3>
               <p className="text-gray-400 text-sm">{product.description}</p>
             </div>
-            <div className="flex justify-between items-center mt-2">
-              <p className="text-red-500 font-semibold">${product.price.toLocaleString()}</p>
+            <div className="flex justify-between items-center mt-2 py-1">
+              <div>
+                <p className="text-red-500 font-semibold">${product.price.toLocaleString()}</p>
+                <p className="text-gray-600 text-sm">Stock: {product.stock}</p>
+              </div>
               <Button size="small" onClick={() => openModal(product._id)}>Ver Más</Button>
             </div>
           </div>

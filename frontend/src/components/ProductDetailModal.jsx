@@ -14,7 +14,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
       quantity,
       selectedSize: selectedSize || availableSizes[0],
     });
-    onClose(); // Cierra la modal después de agregar al carrito
+    onClose(); 
   };
 
   if (!isOpen || !product) return null;
@@ -152,6 +152,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
 
         <div className="mt-4 flex justify-between items-center border-t border-gray-700 pt-4">
           <p className="text-red-500 font-bold text-xl">${product.price.toLocaleString()}</p>
+          <p className="text-gray-500 text-sm">Stock disponible: {product.stock}</p>
           <Button size="medium" className="hover:bg-red-700" onClick={handleAddToCart}>
             Agregar {quantity} al Carrito {selectedSize && `(Talla: ${selectedSize})`}
           </Button>
