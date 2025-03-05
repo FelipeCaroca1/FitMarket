@@ -11,6 +11,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -62,6 +63,14 @@ function App() {
             element={
               <PrivateRoutes>
                 <Success />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/cancel"
+            element={
+              <PrivateRoutes>
+                <Cancel />
               </PrivateRoutes>
             }
           />

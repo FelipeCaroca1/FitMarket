@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 const Success = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            navigate("/shop"); // Redirige automáticamente después de unos segundos
+        }, 5000);
+
+        return () => clearTimeout(timeout); // Limpia el timeout si el usuario navega antes
+    }, [navigate]);
 
     return (
         <div className="max-w-4xl mx-auto p-10 text-white text-center">
@@ -21,6 +30,8 @@ const Success = () => {
             >
                 Volver a la Tienda
             </Button>
+
+            <p className="text-sm text-gray-600 mt-4">Serás redirigido automáticamente en 5 segundos...</p>
         </div>
     );
 };

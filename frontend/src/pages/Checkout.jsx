@@ -10,7 +10,7 @@ const Checkout = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(""); // Estado para mostrar el error
+    const [error, setError] = useState(""); 
 
     const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toLocaleString();
 
@@ -23,7 +23,6 @@ const Checkout = () => {
             return;
         }
 
-        // Validamos que el usuario haya ingresado datos válidos en la tarjeta
         const { error: cardError } = await stripe.createPaymentMethod({
             type: "card",
             card: cardElement,
@@ -50,10 +49,12 @@ const Checkout = () => {
                 stripe.redirectToCheckout({ sessionId: session.id });
             } else {
                 setError("Error al crear la sesión de pago. Intenta nuevamente.");
+                navigate("/cancel", { state: { paymentFailed: true } });
             }
         } catch (error) {
             console.error("Error en el proceso de pago:", error);
             setError("Error en el proceso de pago. Inténtalo de nuevo más tarde.");
+            navigate("/cancel", { state: { paymentFailed: true } });
         }
         setLoading(false);
     };

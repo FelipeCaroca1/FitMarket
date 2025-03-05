@@ -20,7 +20,7 @@ const createCheckoutSession = async (req, res) => {
                     name: item.name,
                     images: [item.image],
                 },
-                unit_amount: item.price * 100, // Stripe maneja precios en centavos
+                unit_amount: item.price * 100, 
             },
             quantity: item.quantity,
         }));
@@ -30,7 +30,7 @@ const createCheckoutSession = async (req, res) => {
             line_items: lineItems,
             mode: "payment",
             success_url: "http://localhost:5173/success",
-            cancel_url: "http://localhost:5173/cart?paymentFailed=true",
+            cancel_url: "http://localhost:5173/cancel",
         });
 
         res.json({ id: session.id });
