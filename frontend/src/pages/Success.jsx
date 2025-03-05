@@ -1,17 +1,26 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import useCart from "../context/useCart"; 
 import Button from "../components/Button";
 
 const Success = () => {
+    const { dispatch } = useCart(); 
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        if (query.get("status") === "success") {
+            dispatch({ type: "CLEAR_CART" });
+            localStorage.removeItem("cart");
+        }
+
         const timeout = setTimeout(() => {
-            navigate("/shop"); // Redirige automáticamente después de unos segundos
+            navigate("/shop"); 
         }, 5000);
 
-        return () => clearTimeout(timeout); // Limpia el timeout si el usuario navega antes
-    }, [navigate]);
+        return () => clearTimeout(timeout);
+    }, [dispatch, navigate, location.search]);
 
     return (
         <div className="max-w-4xl mx-auto p-10 text-white text-center">

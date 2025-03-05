@@ -14,3 +14,4 @@ PrivateRoutes.propTypes = {
 };
 
 export default PrivateRoutes;
+

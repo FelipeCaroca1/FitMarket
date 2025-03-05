@@ -1,13 +1,24 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; // 🔥 Agregado useLocation
 import Button from "../components/Button";
 
 const Cancel = () => {
     const navigate = useNavigate();
+    const location = useLocation(); // 🔥 Para leer parámetros de la URL
 
     useEffect(() => {
-        console.log("Redirigiendo a /cancel desde Stripe...");
-    }, []);
+        console.log("✅ Entrando a useEffect en Cancel.jsx");
+
+        const query = new URLSearchParams(location.search);
+        console.log("🔍 Parámetros de la URL:", query.toString());
+
+        if (query.get("status") === "cancel") {
+            console.log("❌ Pago cancelado, redirigiendo...");
+            setTimeout(() => {
+                navigate("/checkout");
+            }, 5000);
+        }
+    }, [navigate, location.search]);
 
     return (
         <div className="max-w-4xl mx-auto p-10 text-white text-center">

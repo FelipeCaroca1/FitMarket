@@ -6,6 +6,8 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const stripeRoutes = require("./routes/stripeRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 
 dotenv.config();
 
@@ -33,6 +35,7 @@ app.use("/images", express.static(path.join(__dirname, "../public/img")));
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/stripe", stripeRoutes);
+app.use("/api/user", userRoutes);
 
 // Ruta para comprobar que el servidor funciona
 app.get("/", (req, res) => {
