@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import AuthContext from "../../context/AuthContext";
+import { useState, useContext } from "react";
+import useUser from "../../context/useUser";
+import AuthContext from "../../context/AuthContext"; // ⬅️ Importamos AuthContext
 import CartContext from "../../context/CartContext";
 import ConfirmModal from "../ConfirmModal";
 import logo from "../../assets/img/logo.png";
 import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { userProfile } = useUser(); // Mantiene la información del usuario
+  const { logoutUser } = useContext(AuthContext); // ⬅️ Ahora `logoutUser` viene de AuthContext
   const { cartItems } = useContext(CartContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,7 +18,7 @@ const Navbar = () => {
   };
 
   const confirmLogout = () => {
-    logoutUser();
+    logoutUser(); // ⬅️ Ahora esto no dará error
     setIsModalOpen(false);
   };
 
@@ -31,34 +33,20 @@ const Navbar = () => {
           Inicio
         </Link>
 
-        {user && (
-          <Link to="/shop" className="text-textSecondary hover:text-primary transition-colors">
-            Tienda
-          </Link>
-        )}
-
-        {!user ? (
+        {userProfile ? (
           <>
-            <Link to="/register" className="text-textSecondary hover:text-primary transition-colors">
-              Registrarse
+            <Link to="/shop" className="text-textSecondary hover:text-primary transition-colors">
+              Tienda
             </Link>
-            <Link to="/login" className="text-textSecondary hover:text-primary transition-colors">
-              Iniciar Sesión
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/Profile" className="text-textSecondary hover:text-primary transition-colors">
+            <Link to="/profile" className="text-textSecondary hover:text-primary transition-colors">
               Perfil
             </Link>
-
             <button
               onClick={handleLogoutClick}
               className="text-textSecondary hover:text-red-500 transition-colors"
             >
               Cerrar Sesión
             </button>
-            
             <Link to="/cart" className="relative">
               <FiShoppingCart className="text-white text-2xl hover:text-red-500 transition" />
               {cartItems.length > 0 && (
@@ -68,6 +56,19 @@ const Navbar = () => {
               )}
             </Link>
           </>
+        ) : (
+          !localStorage.getItem("token") ? (
+            <>
+              <Link to="/register" className="text-textSecondary hover:text-primary transition-colors">
+                Registrarse
+              </Link>
+              <Link to="/login" className="text-textSecondary hover:text-primary transition-colors">
+                Iniciar Sesión
+              </Link>
+            </>
+          ) : (
+            <p className="text-gray-400">Cargando usuario...</p>
+          )
         )}
       </div>
 

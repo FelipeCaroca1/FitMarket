@@ -5,7 +5,7 @@ import Button from "../components/Button";
 const Register = () => {
   const { registerUser, user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
-    name: "",
+    name: "", // ⬅️ Ahora los inputs coinciden con estas claves
     email: "",
     password: "",
   });
@@ -28,15 +28,14 @@ const Register = () => {
   
     try {
       await registerUser({
-        name: formData.newName, 
-        email: formData.newEmail, 
-        password: formData.newPassword, 
+        name: formData.name, // ⬅️ Ahora coincide con el estado
+        email: formData.email,
+        password: formData.password,
       });
     } catch (error) {
       setError(error.message || "Error al registrar usuario");
     }
   };
-  
 
   return (
     <div className="w-full flex justify-center items-center px-4">
@@ -49,10 +48,10 @@ const Register = () => {
               <label className="text-sm">Nombre</label>
               <input
                 type="text"
-                name="newName"
-                value={formData.newName}
+                name="name" // ⬅️ Ahora coincide con formData
+                value={formData.name}
                 onChange={handleChange}
-                autoComplete="new-name" 
+                autoComplete="new-name"
                 className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
                 required
               />
@@ -61,10 +60,10 @@ const Register = () => {
               <label className="text-sm">Correo Electrónico</label>
               <input
                 type="email"
-                name="newEmail"
-                value={formData.newEmail}
+                name="email" // ⬅️ Ahora coincide con formData
+                value={formData.email}
                 onChange={handleChange}
-                autoComplete="new-email" 
+                autoComplete="new-email"
                 className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
                 required
               />
@@ -74,10 +73,10 @@ const Register = () => {
             <label className="text-sm">Contraseña</label>
             <input
               type="password"
-              name="newPassword"
-              value={formData.newPassword}
+              name="password" // ⬅️ Ahora coincide con formData
+              value={formData.password}
               onChange={handleChange}
-              autoComplete="new-password" 
+              autoComplete="new-password"
               className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-red-500 transition"
               required
             />

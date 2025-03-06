@@ -59,30 +59,4 @@ const loginUser = async (req, res) => {
   }
 };
 
-const getUserProfile = async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select("-password");
-    if (user) {
-      res.json({ name: user.name, email: user.email });
-    } else {
-      res.status(404).json({ message: "Usuario no encontrado" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error en el servidor" });
-  }
-};
-
-const deleteUser = async (req, res) => {
-  try {
-    const user = await User.findByIdAndDelete(req.user.id);
-    if (user) {
-      res.json({ message: "Cuenta eliminada exitosamente" });
-    } else {
-      res.status(404).json({ message: "Usuario no encontrado" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error al eliminar la cuenta" });
-  }
-};
-
-module.exports = { registerUser, loginUser, getUserProfile, deleteUser };
+module.exports = { registerUser, loginUser };

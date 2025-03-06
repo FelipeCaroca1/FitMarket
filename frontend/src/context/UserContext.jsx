@@ -1,10 +1,12 @@
-import { createContext, useState, } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import AuthContext from "./AuthContext"; // ⬅️ Importa AuthContext para usar su logoutUser
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
+  const { logoutUser } = useContext(AuthContext); // ⬅️ Usa el logout global de AuthContext
 
   const getUserProfile = async (token) => {
     try {
@@ -27,8 +29,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const updateUserProfile = async (updatedData, token) => {
+  const updateUserProfile = async (updatedData) => {
     try {
+      const token = localStorage.getItem("token"); 
+      
+      if (!token) {
+        throw new Error("No se encontró el token en localStorage");
+      }
+      
       const response = await fetch("http://localhost:5000/api/user/profile", {
         method: "PUT",
         headers: {
@@ -37,10 +45,10 @@ export const UserProvider = ({ children }) => {
         },
         body: JSON.stringify(updatedData),
       });
-
+      
       const data = await response.json();
       if (response.ok) {
-        setUserProfile((prev) => ({ ...prev, ...updatedData })); // Actualiza el estado
+        setUserProfile((prev) => ({ ...prev, ...updatedData }));
       } else {
         console.error("Error al actualizar perfil:", data.message);
       }
@@ -49,14 +57,44 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const deleteAccount = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No se encontró el token en localStorage");
+      }
+      
+      const response = await fetch("http://localhost:5000/api/user/delete", {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      
+      if (response.ok) {
+        logoutUser(); 
+      } else {
+        console.error("Error al eliminar cuenta");
+      }
+    } catch (error) {
+      console.error("Error en la eliminación de cuenta:", error);
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token"); 
+    if (token) {
+      getUserProfile(token);
+    }
+  }, []);
+
   return (
-    <UserContext.Provider value={{ userProfile, getUserProfile, updateUserProfile }}>
+    <UserContext.Provider value={{ userProfile, getUserProfile, updateUserProfile, deleteAccount }}>
       {children}
     </UserContext.Provider>
   );
 };
 
-// Validación de props con PropTypes
 UserProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
