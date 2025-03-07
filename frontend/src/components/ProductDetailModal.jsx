@@ -47,7 +47,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-background text-white p-6 rounded-lg shadow-lg max-w-4xl w-full h-[85vh] flex flex-col relative"
+        className="bg-background text-white p-6 rounded-lg shadow-lg w-full max-w-4xl h-auto max-h-[85vh] flex flex-col relative"
         onClick={(event) => event.stopPropagation()}
       >
         <button

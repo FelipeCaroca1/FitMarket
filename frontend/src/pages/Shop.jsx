@@ -17,7 +17,6 @@ const Shop = () => {
         throw new Error("Error al obtener detalles del producto");
       }
       const productData = await response.json();
-      console.log(productData);
       setSelectedProduct(productData);
       setIsModalOpen(true);
     } catch (error) {

@@ -27,25 +27,46 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full flex justify-center py-4"> 
-      <div className="relative w-full max-w-4xl max-h-[420px] mx-auto overflow-hidden rounded-lg shadow-lg">
-        <div className="flex transition-transform duration-500 ease-in-out"
-             style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+    <div className="w-full flex justify-center py-4 px-4">
+      <div className="relative w-full max-w-4xl h-[420px] mx-auto overflow-hidden rounded-lg shadow-lg">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            width: `${images.length * 100}%`, 
+            transform: `translateX(-${(currentIndex * 100) / images.length}%)`, 
+          }}
+        >
           {images.map((src, index) => (
-            <img key={index} src={src} alt={`Slide ${index}`} className="w-full h-[600px] object-cover" />
+            <img
+              key={index}
+              src={src}
+              alt={`Slide ${index}`}
+              className="w-full h-[420px] object-cover"
+              style={{
+                width: `${100 / images.length}%`,
+              }}
+            />
           ))}
         </div>
-        <button onClick={prevSlide} className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+        >
           ❮
         </button>
-        <button onClick={nextSlide} className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+        >
           ❯
         </button>
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {images.map((_, index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-white" : "bg-gray-400"}`}
+              className={`w-3 h-3 rounded-full ${
+                index === currentIndex ? "bg-white" : "bg-gray-400"
+              }`}
             ></div>
           ))}
         </div>
@@ -54,4 +75,4 @@ const Carousel = () => {
   );
 };
 
-  export default Carousel;
+export default Carousel;

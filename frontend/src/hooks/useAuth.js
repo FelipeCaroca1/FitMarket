@@ -35,7 +35,7 @@ const useAuth = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Error al iniciar sesión");

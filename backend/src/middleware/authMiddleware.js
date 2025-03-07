@@ -13,7 +13,7 @@ const protect = async (req, res, next) => {
       if (!req.user) {
         return res.status(401).json({ message: "No autorizado, usuario no encontrado" });
       }
-      console.log("✅ Usuario autenticado:", req.user);
+
       next();
     } catch (error) {
       res.status(401).json({ message: "No autorizado, token inválido" });

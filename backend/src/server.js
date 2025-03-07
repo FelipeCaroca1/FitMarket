@@ -11,12 +11,10 @@ const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
 
-// Conectar a MongoDB
 connectDB();
 
 const app = express();
 
-// Configuración de CORS
 app.use(
   cors({
     origin: "http://localhost:5173", 
@@ -24,25 +22,21 @@ app.use(
   })
 );
 
-// Middleware para analizar JSON
 app.use(express.json());
 
-// Servir imágenes estáticas desde la carpeta public/images
 app.use("/images", express.static(path.join(__dirname, "../public/img")));
 
 
-// Rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/stripe", stripeRoutes);
 app.use("/api/user", userRoutes);
 
-// Ruta para comprobar que el servidor funciona
 app.get("/", (req, res) => {
   res.send("API funcionando correctamente 🚀");
 });
 
-// Configuración del puerto
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

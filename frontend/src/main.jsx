@@ -2,21 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import { CartProvider } from "./context/CartContext"; // Importación correcta
-import { UserProvider } from "./context/UserContext";  // Importamos UserProvider
+import { CartProvider } from "./context/CartContext"; 
+import { UserProvider } from "./context/UserContext";  
 import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
+  <BrowserRouter> 
+    <AuthProvider>
+      <UserProvider>
         <CartProvider>
-          <UserProvider>  {/* Ahora incluye UserProvider */}
-            <App />
-          </UserProvider>
+          <App />
         </CartProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+      </UserProvider>
+    </AuthProvider>
+  </BrowserRouter>
+</React.StrictMode>
 );

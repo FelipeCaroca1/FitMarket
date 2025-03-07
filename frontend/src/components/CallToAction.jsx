@@ -1,32 +1,17 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useUser from "../hooks/useUser"; 
-import useAuth from "../hooks/useAuth"; 
-import Button from "../components/Button";
+import useAuth from "../hooks/useAuth";
+import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const CallToAction = () => {
-  const { userProfile } = useUser(); 
-  const { user } = useAuth();  
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const [buttonText, setButtonText] = useState("Regístrate ahora");
-
-  useEffect(() => {
-    if (user) {
-      setButtonText("Explora la tienda");
-    } else if (userProfile) {
-      setButtonText("Inicia sesión");
-    } else {
-      setButtonText("Regístrate ahora");
-    }
-  }, [user, userProfile]);
 
   const handleButtonClick = () => {
-    if (!userProfile) {
-      navigate("/register");
-    } else if (!user) {
-      navigate("/login");
+    if (user) {
+      navigate("/shop"); 
     } else {
-      navigate("/shop");
+      navigate("/register"); 
     }
   };
 
@@ -43,12 +28,22 @@ const CallToAction = () => {
         <p className="text-lg mb-6">
           Descubre los mejores productos para potenciar tu rendimiento.
         </p>
+
         <Button 
           onClick={handleButtonClick} 
           className="relative z-10 px-6 py-3 text-lg bg-red-500 text-white hover:bg-red-600 transition"
         >
-          {buttonText}
+          {user ? "Explora la tienda" : "Regístrate ahora"}
         </Button>
+
+        {!user && (
+          <p className="mt-4 text-gray-300">
+            ¿Ya tienes cuenta?{" "}
+            <Link to="/login" className="text-red-400 hover:text-red-500 underline">
+              Inicia sesión aquí
+            </Link>
+          </p>
+        )}
       </div>
     </section>
   );

@@ -12,6 +12,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
+import AboutUs from "./pages/AboutUs";
+import Guides from "./pages/Guides";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -24,6 +26,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/aboutus" element={<AboutUs/>} />
+          <Route path="/guide" element={<Guides/>} />
 
           {/* Rutas Privadas */}
           <Route
