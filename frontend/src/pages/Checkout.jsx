@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import CartContext from "../context/CartContext";
+import { useState } from "react";
+import useCart from "../hooks/useCart.js";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const Checkout = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems } = useCart();
     const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();

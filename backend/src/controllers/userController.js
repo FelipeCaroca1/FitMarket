@@ -2,29 +2,23 @@ const User = require("../models/User");
 
 const getUserProfile = async (req, res) => {
   try {
-    console.log("Obteniendo perfil para ID:", req.user.id); // Log para depuración
     const user = await User.findById(req.user.id).select("-password"); 
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
     res.json(user);
   } catch (error) {
-    console.error("Error en getUserProfile:", error);
     res.status(500).json({ message: "Error al obtener el perfil del usuario" });
   }
 };
 
 const updateUserProfile = async (req, res) => {
   try {
-    console.log("ID del usuario recibido:", req.user.id); // Verificar si el ID llega
-    console.log("Datos recibidos en req.body:", req.body); // Verificar datos del frontend
-
     const user = await User.findById(req.user.id);
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
 
-    // Actualizar solo los campos proporcionados
     Object.keys(req.body).forEach((key) => {
       if (req.body[key] !== undefined) {
         user[key] = req.body[key];
@@ -33,11 +27,8 @@ const updateUserProfile = async (req, res) => {
 
     await user.save();
 
-    console.log("Perfil actualizado correctamente:", user); // Confirmar que se guardó
-
     res.json({ message: "Perfil actualizado correctamente", user });
   } catch (error) {
-    console.error("Error en updateUserProfile:", error);
     res.status(500).json({ message: "Error al actualizar el perfil" });
   }
 };

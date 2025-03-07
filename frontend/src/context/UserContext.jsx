@@ -1,12 +1,12 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import AuthContext from "./AuthContext"; // ⬅️ Importa AuthContext para usar su logoutUser
+import AuthContext from "./AuthContext";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
-  const { logoutUser } = useContext(AuthContext); // ⬅️ Usa el logout global de AuthContext
+  const { logoutUser } = useContext(AuthContext);
 
   const getUserProfile = async (token) => {
     try {
@@ -32,7 +32,6 @@ export const UserProvider = ({ children }) => {
   const updateUserProfile = async (updatedData) => {
     try {
       const token = localStorage.getItem("token"); 
-      
       if (!token) {
         throw new Error("No se encontró el token en localStorage");
       }
@@ -67,12 +66,13 @@ export const UserProvider = ({ children }) => {
       const response = await fetch("http://localhost:5000/api/user/delete", {
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       
       if (response.ok) {
-        logoutUser(); 
+        setUserProfile(null);
+        logoutUser();
       } else {
         console.error("Error al eliminar cuenta");
       }

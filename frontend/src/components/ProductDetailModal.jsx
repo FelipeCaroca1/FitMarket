@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
-import CartContext from "../context/CartContext";
+import useCart from "../hooks/useCart.js";
 
 const ProductDetailModal = ({ product, isOpen, onClose }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
     addToCart({

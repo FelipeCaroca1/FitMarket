@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const PrivateRoutes = ({ children }) => {
   const { user } = useContext(AuthContext); 
 
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/" />;
 };
 
 PrivateRoutes.propTypes = {

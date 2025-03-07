@@ -1,13 +1,13 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useUser from "../context/useUser";
+import useUser from "../hooks/useUser.js";
+import useAuth from "../hooks/useAuth.js"; 
 import Button from "../components/Button";
 import ConfirmModal from "../components/ConfirmModal";
-import AuthContext from "../context/AuthContext";
 
 const Profile = () => {
-  const { userProfile, deleteAccount, updateUserProfile, getUserProfile } = useUser();
-  const { logoutUser } = useContext(AuthContext);
+  const { userProfile, updateUserProfile, getUserProfile } = useUser();
+  const { logoutUser, deleteAccount } = useAuth(); 
   const navigate = useNavigate();
   
   const [loading, setLoading] = useState(true);
@@ -27,9 +27,9 @@ const Profile = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login"); // Solo redirige si NO hay token
+      navigate("/login"); 
     } else if (!userProfile) {
-      getUserProfile(token); // Intenta recuperar el perfil antes de redirigir
+      getUserProfile(token); 
     } else {
       setFormData({
         apellido: userProfile.apellido || "",
@@ -42,7 +42,6 @@ const Profile = () => {
       setLoading(false);
     }
 }, [userProfile, navigate, getUserProfile]);
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -60,6 +59,7 @@ const Profile = () => {
   const confirmLogout = () => {
     logoutUser();
     setIsLogoutModalOpen(false);
+    navigate("/");
   };
 
   const confirmDeleteAccount = async () => {
@@ -143,12 +143,12 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 mt-6">
-          <Button size="medium" onClick={handleSaveChanges} disabled={!hasChanges}>
+        <div className="flex justify-center gap-4 mt-7">
+          <Button size="small" onClick={handleSaveChanges} disabled={!hasChanges}>
             Guardar cambios
           </Button>
-          <Button size="medium" onClick={handleLogout}>Cerrar Sesión</Button>
-          <Button size="medium" onClick={handleDeleteAccount}>Eliminar Cuenta</Button>
+          <Button size="small" onClick={handleLogout}>Cerrar Sesión</Button>
+          <Button size="small" onClick={handleDeleteAccount}>Eliminar Cuenta</Button>
         </div>
       </div>
 

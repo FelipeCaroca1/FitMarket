@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
-import CartContext from "../context/CartContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Agregado
+import useCart from "../hooks/useCart.js";
 import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
 import ConfirmModal from "../components/ConfirmModal";
 
 const Cart = () => {
-    const { cartItems, addToCart, removeFromCart, clearCart } = useContext(CartContext);
-    const navigate = useNavigate();
+    const { cartItems, addToCart, removeFromCart, clearCart } = useCart();
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+    const navigate = useNavigate(); // Agregado aquí
 
     const handleIncrease = (item) => {
         if (item.quantity < item.stock) {
@@ -26,14 +26,14 @@ const Cart = () => {
             <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-500 to-gray-300 bg-clip-text text-transparent inline-block bg-[length:100%_100%]">
                 Carrito de Compras
             </h2>
-            
+
             {cartItems.length === 0 ? (
                 <div className="text-center space-y-4">
                     <p className="text-gray-400">Tu carrito está vacío.</p>
                     <Button
                         size="medium"
                         className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
-                        onClick={() => navigate("/shop")}
+                        onClick={() => navigate("/shop")} // Ahora sí funcionará
                     >
                         Ir a la Tienda
                     </Button>
@@ -87,7 +87,7 @@ const Cart = () => {
                         <Button
                             size="medium"
                             className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
-                            onClick={() => navigate("/checkout")}
+                            onClick={() => navigate("/checkout")} // Ahora sí funcionará
                         >
                             Proceder al Pago
                         </Button>

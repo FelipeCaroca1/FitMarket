@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
-import useUser from "../../context/useUser";
-import AuthContext from "../../context/AuthContext"; // ⬅️ Importamos AuthContext
-import CartContext from "../../context/CartContext";
+import { useState } from "react";
+import useUser from "../../hooks/useUser.js";
+import useAuth from "../../hooks/useAuth.js"; 
+import useCart from "../../hooks/useCart.js";
 import ConfirmModal from "../ConfirmModal";
 import logo from "../../assets/img/logo.png";
 import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
-  const { userProfile } = useUser(); // Mantiene la información del usuario
-  const { logoutUser } = useContext(AuthContext); // ⬅️ Ahora `logoutUser` viene de AuthContext
-  const { cartItems } = useContext(CartContext);
+  const { userProfile } = useUser(); 
+  const { logoutUser } = useAuth(); 
+  const { cartItems } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogoutClick = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   const confirmLogout = () => {
-    logoutUser(); // ⬅️ Ahora esto no dará error
+    logoutUser();
     setIsModalOpen(false);
   };
 

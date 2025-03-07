@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import useCart from "../context/useCart"; 
+import useCart from "../hooks/useCart.js"; 
 import Button from "../components/Button";
 
 const Success = () => {
