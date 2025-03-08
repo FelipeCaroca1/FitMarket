@@ -9,7 +9,7 @@ const stripeRoutes = require("./routes/stripeRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 
-dotenv.config();
+require('dotenv').config();
 
 connectDB();
 
