@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import PropTypes from "prop-types";
 import { cartReducer, initialState } from "../reducers/cartReducer";
 
@@ -6,6 +6,12 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  // 👉 NUEVO estado para manejar visibilidad del carrito sidebar
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
@@ -20,7 +26,18 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems: state.cartItems, addToCart, removeFromCart, clearCart, dispatch}}>
+    <CartContext.Provider
+      value={{
+        cartItems: state.cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        dispatch,
+        isCartOpen,
+        openCart,
+        closeCart
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -30,5 +47,4 @@ CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CartContext; 
-
+export default CartContext;

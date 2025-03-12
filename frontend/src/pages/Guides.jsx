@@ -10,10 +10,10 @@ const Guia = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex flex-col items-center  text-white"
+      className="min-h-screen w-full bg-cover bg-center flex flex-col items-center  text-white"
       style={{ backgroundImage: "url('/img/cta-background.jpg')", backgroundAttachment: "fixed" }}
     >
-      <div className="w-[1200px] rounded-lg bg-black bg-opacity-80 p-8 my-8">
+      <div className="w-full rounded-lg bg-black bg-opacity-80 p-8">
         <h1 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300 mb-8">
           Lo que necesitas saber sobre suplementos y salud
         </h1>

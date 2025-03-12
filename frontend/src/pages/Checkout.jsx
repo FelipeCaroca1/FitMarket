@@ -1,131 +1,167 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import useCart from "../hooks/useCart.js";
-import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import Button from "../components/Button.jsx";
+import ConfirmModal from "../components/ConfirmModal.jsx";
 
 const Checkout = () => {
-    const { cartItems } = useCart();
-    const navigate = useNavigate();
-    const stripe = useStripe();
-    const elements = useElements();
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(""); 
+  const { cartItems, addToCart, removeFromCart, clearCart } = useCart();
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-    const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toLocaleString();
 
-    const handlePayment = async () => {
-        if (!stripe || !elements) return;
+  const handleIncrease = (item) => {
+    if (item.quantity < item.stock) {
+      addToCart({ ...item, quantity: 1 });
+    }
+  };
 
-        const cardElement = elements.getElement(CardElement);
-        if (!cardElement) {
-            setError("Por favor ingresa los datos de tu tarjeta antes de continuar.");
-            return;
-        }
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      addToCart({ ...item, quantity: -1 });
+    }
+  };
 
-        const { error: cardError } = await stripe.createPaymentMethod({
-            type: "card",
-            card: cardElement,
-        });
+  const handlePayment = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/checkout/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cartItems }),
+      });
+  
+      const data = await response.json();
+  
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error("No se recibió una URL de Stripe.");
+      }
+    } catch (error) {
+      console.error("Error al crear sesión de Stripe:", error);
+    }
+  };
+  
 
-        if (cardError) {
-            setError("Datos de tarjeta inválidos. Verifica e intenta nuevamente.");
-            return;
-        }
+  return (
+    <div className="max-w-4xl mx-auto p-10 text-white space-y-10">
+      <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-500 to-gray-300 bg-clip-text text-transparent inline-block bg-[length:100%_100%]">
+        Resumen de compra
+      </h2>
 
-        setLoading(true);
-        try {
-            const response = await fetch("http://localhost:5000/api/stripe/create-checkout-session", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ cartItems }),
-            });
-
-            const session = await response.json();
-
-            if (session.id) {
-                stripe.redirectToCheckout({ sessionId: session.id });
-            } else {
-                setError("Error al crear la sesión de pago. Intenta nuevamente.");
-                navigate("/cancel", { state: { paymentFailed: true } });
-            }
-        } catch (error) {
-            console.error("Error en el proceso de pago:", error);
-            setError("Error en el proceso de pago. Inténtalo de nuevo más tarde.");
-            navigate("/cancel", { state: { paymentFailed: true } });
-        }
-        setLoading(false);
-    };
-
-    return (
-        <div className="max-w-6xl mx-auto p-10 text-white">
-            <div className="container mx-auto p-5">
-                <div className="flex justify-center">
-                    <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-500 to-gray-300 bg-clip-text text-transparent inline-block bg-[length:100%_100%]">
-                        Procesar Pago
-                    </h2>
-                </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-10 items-start md:items-stretch">
-                <div className="p-6 bg-black/80 rounded-lg shadow-md h-full flex flex-col justify-between">
-                    <h3 className="text-xl font-bold text-red-500 mb-4 text-center">Resumen de Compra</h3>
-                    <div className="flex flex-col space-y-2">
-                        {cartItems.map((item) => (
-                            <div key={item._id} className="flex justify-between text-white">
-                                <p className="text-left px-2">{item.name} x {item.quantity}</p>
-                                <p className="text-red-500 font-semibold">${(item.price * item.quantity).toLocaleString()}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <hr className="my-4 border-gray-600" />
-                    <p className="text-lg font-bold text-red-500 text-right">Total: ${totalAmount}</p>
-                </div>
-
-                <div className="p-6 bg-black/80 rounded-lg shadow-md h-full flex flex-col justify-between">
-                    <h3 className="text-xl font-bold text-red-500 mb-4 text-center">Finalizar compra</h3>
-
-                    {error && <p className="text-red-500 text-center">{error}</p>}
-
-                    <CardElement
-                        className="p-3 bg-background rounded-md w-full"
-                        options={{
-                            style: {
-                                base: {
-                                    color: "#ffffff", 
-                                    "::placeholder": {
-                                        color: "#cccccc", 
-                                    },
-                                },
-                                invalid: {
-                                    color: "#ff4d4d", 
-                                },
-                            },
-                        }}
-                    />
-                    <Button
-                        size="medium"
-                        className="w-full mt-4 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
-                        onClick={handlePayment}
-                        disabled={loading}
-                    >
-                        {loading ? "Procesando..." : "Pagar"}
-                    </Button>
-                </div>
-            </div>
-            <div className="mt-6 text-center">
-                <Button
-                    size="medium"
-                    className="border border-gray-600 text-gray-400 hover:bg-red-600 hover:text-white transition"
-                    onClick={() => navigate("/cart")}
-                >
-                    Volver al Carrito
-                </Button>
-            </div>
+      {cartItems.length === 0 ? (
+        <div className="text-center space-y-4">
+          <p className="text-gray-400">Tu carrito está vacío.</p>
+          <Button
+            size="medium"
+            className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+            onClick={() => navigate("/shop")}
+          >
+            Ir a la Tienda
+          </Button>
         </div>
-    );
+      ) : (
+        <div className="space-y-10">
+          {cartItems.map((item) => (
+            <div
+              key={`${item._id}-${item.selectedSize}`}
+              className="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 py-8 space-y-6 md:space-y-0 md:space-x-6"
+            >
+              <div className="flex items-center gap-6">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-24 h-24 object-cover rounded-md"
+                />
+                <div>
+                  <p className="font-semibold text-lg">{item.name}</p>
+                  {item.selectedSize && (
+                    <p className="text-gray-400">Talla: {item.selectedSize}</p>
+                  )}
+                  <p className="text-gray-400 text-lg">
+                    ${ (item.price * item.quantity).toLocaleString() }
+                  </p>
+                  <p className="text-gray-500">Stock disponible: {item.stock}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+                <div className="flex items-center gap-2">
+                  <button
+                    className="p-2 px-4 rounded-l bg-transparent text-white border border-gray-600 hover:bg-red-500 transition"
+                    onClick={() => handleDecrease(item)}
+                  >
+                    -
+                  </button>
+                  <span className="p-2 px-6 bg-[#2d2d2d] text-white border border-gray-600">
+                    {item.quantity}
+                  </span>
+                  <button
+                    className={`p-2 px-4 rounded-r bg-transparent text-white border border-gray-600 transition ${
+                      item.quantity >= item.stock
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:bg-green-700"
+                    }`}
+                    onClick={() => handleIncrease(item)}
+                    disabled={item.quantity >= item.stock}
+                  >
+                    +
+                  </button>
+                </div>
+                <Button
+                  size="small"
+                  className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+                  onClick={() =>
+                    removeFromCart({ _id: item._id, selectedSize: item.selectedSize })
+                  }
+                >
+                  Eliminar
+                </Button>
+              </div>
+            </div>
+          ))}
+
+          <div className="mt-10 flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-6 space-y-6 md:space-y-0">
+            <p className="text-xl font-bold text-green-700">
+              Total: ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toLocaleString()}
+            </p>
+            <Button
+              size="medium"
+              className="text-green-600 border-green-600 hover:bg-green-900 transition"
+              onClick={handlePayment}
+            >
+              Proceder al Pago
+            </Button>
+          </div>
+
+          <div className="mt-6 text-center">
+            <Button
+              size="medium"
+              className="border border-gray-600 text-gray-400 hover:bg-red-600 hover:text-white transition"
+              onClick={() => setIsConfirmModalOpen(true)}
+            >
+              Vaciar Carrito
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {isConfirmModalOpen && (
+        <ConfirmModal
+          isOpen={isConfirmModalOpen}
+          title="Vaciar Carrito"
+          message="¿Estás seguro de que quieres eliminar todos los productos de tu carrito?"
+          onConfirm={() => {
+            clearCart();
+            setIsConfirmModalOpen(false);
+          }}
+          onCancel={() => setIsConfirmModalOpen(false)}
+        />
+      )}
+    </div>
+  );
 };
 
 export default Checkout;

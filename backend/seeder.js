@@ -3,9 +3,10 @@ const dotenv = require("dotenv");
 const connectDB = require("./src/config/db");
 const Product = require("./src/models/Product");
 
-dotenv.config();
+require("dotenv").config();
 
 const products = [
+ 
   {
     name: "Proteína Whey 1kg",
     description: "Proteína de suero de leche con 25g de proteína por porción.",

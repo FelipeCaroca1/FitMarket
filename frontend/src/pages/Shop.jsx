@@ -66,10 +66,10 @@ const Shop = () => {
             </div>
             <div className="flex justify-between items-center mt-2 py-1">
               <div>
-                <p className="text-red-500 font-semibold">${product.price.toLocaleString()}</p>
+                <p className="text-white font-semibold">${product.price.toLocaleString()}</p>
                 <p className="text-gray-600 text-sm">Stock: {product.stock}</p>
               </div>
-              <Button size="small" onClick={() => openModal(product._id)}>Ver Más</Button>
+              <Button size="small" className=" text-green-600 border-green-600 hover:bg-green-900" onClick={() => openModal(product._id)}>Ver Más</Button>
             </div>
           </div>
         ))}

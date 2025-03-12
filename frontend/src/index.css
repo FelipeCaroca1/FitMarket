@@ -30,6 +30,4 @@ html, body, #root {
   border-radius: 10px;
 }
 
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #d32f2f, #ff4e50);
-}
+

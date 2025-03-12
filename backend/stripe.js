@@ -20,7 +20,7 @@ const createCheckoutSession = async (req, res) => {
                     name: item.name,
                     images: [item.image]
                 },
-                unit_amount: item.price * 100, 
+                unit_amount: item.price * 100,
             },
             quantity: item.quantity,
         }));
@@ -33,12 +33,11 @@ const createCheckoutSession = async (req, res) => {
             cancel_url: "http://localhost:5173/cancel",
         });
 
-        res.json({ id: session.id });
+        res.json({ url: session.url });
     } catch (error) {
         console.error("Error creando la sesión de checkout:", error);
         res.status(500).json({ message: "Error al procesar el pago" });
     }
 };
-
 
 module.exports = { createCheckoutSession };
