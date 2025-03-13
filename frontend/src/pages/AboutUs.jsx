@@ -7,12 +7,10 @@ const AboutUs = () => {
             style={{ backgroundImage: "url('/img/cta-background.jpg')" }}>
             <div className="w-full rounded-lg bg-black bg-opacity-70 p-8">
                 <h1
-                    className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300"
-                    style={{ backgroundSize: "19.9%" }}
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300"
                 >
                     Sobre FitMarket
                 </h1>
-
 
                 <section className="mt-6 text-lg text-init max-w-3xl mx-auto">
                     <h2 className="text-2xl font-semibold text-red-500">Nuestra Misión</h2>

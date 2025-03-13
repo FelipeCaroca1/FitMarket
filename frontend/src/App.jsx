@@ -22,7 +22,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 function App() {
   return (
     <Elements stripe={stripePromise}>
-      {/* Ahora está aquí, fuera del layout y fuera de <Routes> */}
+      
       <CartSidebar />
       <Layout>
         <Routes>

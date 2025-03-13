@@ -71,11 +71,11 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4"
+      className="fixed top-[90px] left-0 right-0 bottom-0 z-[80] bg-black bg-opacity-70 flex justify-center items-center p-4"
       onClick={onClose}
     >
       <div
-        className="bg-background text-white p-6 rounded-lg shadow-lg w-full max-w-4xl h-auto max-h-[85vh] flex flex-col relative"
+        className="bg-background text-white p-6 rounded-lg shadow-lg w-full max-w-3xl h-auto max-h-[85vh] flex flex-col relative"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -93,7 +93,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
           </div>
 
           <div className="w-full lg:w-1/2 p-6 pr-2">
-            <div className="max-h-[55vh] overflow-y-auto modal-content">
+            <div className="max-h-[55vh] overflow-y-auto pr-6 modal-content">
               <h2 className="text-2xl font-bold text-textPrimary">{product.name}</h2>
               <p className="text-gray-400 mt-2">{product.description}</p>
 

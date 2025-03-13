@@ -18,18 +18,18 @@ const CartSidebar = () => {
         <>
             {isCartOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-40 z-40"
+                    className="fixed inset-0 bg-black bg-opacity-40 z-[60]"
                     onClick={closeCart}
                 />
             )}
 
             <div
-                className={`fixed top-0 right-0 h-full w-80 bg-background z-50 transform transition-transform duration-300 ease-in-out ${isCartOpen ? "translate-x-0 shadow-[rgba(220,38,38,0.3)_-10px_0px_12px]" : "translate-x-full"
+                className={`fixed top-0 right-0 h-full w-80 bg-background z-[70] transform transition-transform duration-300 ease-in-out ${isCartOpen ? "translate-x-0 shadow-[rgba(220,38,38,0.3)_-10px_0px_12px]" : "translate-x-full"
                     }`}
                 onClick={(e) => e.stopPropagation()}
             >
 
-                {/* Header */}
+         
                 <div className="flex items-center justify-between p-4 border-b border-textSecondary">
                     <h2 className="text-lg font-bold text-textPrimary">Carrito de compras</h2>
                     <button onClick={closeCart}>
@@ -37,7 +37,7 @@ const CartSidebar = () => {
                     </button>
                 </div>
 
-                {/* Contenido */}
+               
                 <div className="p-4 pl-5 space-y-4 overflow-y-auto max-h-[calc(100vh-180px)]">
                     {cartItems.length === 0 ? (
                         <p className="text-textSecondary">Tu carrito está vacío.</p>
@@ -67,7 +67,6 @@ const CartSidebar = () => {
                     )}
                 </div>
 
-                {/* Footer */}
                 {cartItems.length > 0 && (
                     <div className="p-4 border-t border-textSecondary space-y-2">
                         <Button size="small" className="!text-white !border-green-600 hover:!bg-green-900 w-full" onClick={handleProceedToCheckout}>

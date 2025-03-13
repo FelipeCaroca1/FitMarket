@@ -73,7 +73,7 @@ const Checkout = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-10 text-white space-y-10">
-      <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-500 to-gray-300 bg-clip-text text-transparent inline-block bg-[length:100%_100%]">
+      <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300 mb-6 py-2">
         Resumen de compra
       </h2>
 
