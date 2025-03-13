@@ -45,7 +45,7 @@ const useAuth = () => {
       setUser(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
-      navigate("/Profile");
+      navigate("/shop");
     } catch (error) {
       console.error("Error en el inicio de sesión:", error.message);
     }

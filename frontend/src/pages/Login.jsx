@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); 
+    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -22,11 +22,14 @@ const Login = () => {
 
       if (!loginSuccess) {
         setError("Correo o contraseña incorrectos. ¿No tienes cuenta? Regístrate.");
+      } else {
+        window.location.reload();
       }
     } catch {
       setError("Ocurrió un error al intentar iniciar sesión.");
     }
   };
+
 
   return (
     <div className="w-full flex justify-center items-center px-4">

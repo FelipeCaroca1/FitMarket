@@ -7,6 +7,9 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const [intervalId, setIntervalId] = useState(null);
+  const [holdTimeoutId, setHoldTimeoutId] = useState(null);
+
 
   const handleAddToCart = () => {
     addToCart({
@@ -14,7 +17,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
       quantity,
       selectedSize: selectedSize || availableSizes[0],
     });
-    onClose(); 
+    onClose();
   };
 
   if (!isOpen || !product) return null;
@@ -40,6 +43,31 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
       setQuantity(quantity - 1);
     }
   };
+
+  const startHoldAction = () => {
+    const timeout = setTimeout(() => {
+      const id = setInterval(() => {
+        setQuantity((prev) => {
+          if (prev < product.stock) {
+            return prev + 1;
+          } else {
+            clearInterval(id);
+            return prev;
+          }
+        });
+      }, 100);
+      setIntervalId(id);
+    }, 600);
+    setHoldTimeoutId(timeout);
+  };
+
+  const stopHoldAction = () => {
+    clearTimeout(holdTimeoutId);
+    clearInterval(intervalId);
+    setHoldTimeoutId(null);
+    setIntervalId(null);
+  };
+
 
   return (
     <div
@@ -144,10 +172,14 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
                     </span>
                     <button
                       onClick={handleIncrease}
+                      onMouseDown={startHoldAction}
+                      onMouseUp={stopHoldAction}
+                      onMouseLeave={stopHoldAction}
                       className="p-2 bg-[#2d2d2d] text-white border-gray-600 focus:outline-none border focus:border-green-700 hover:border-green-700 hover:bg-[#3a3a3a] transition"
                     >
                       +
                     </button>
+
                   </div>
                 </div>
               </div>
@@ -158,7 +190,7 @@ const ProductDetailModal = ({ product, isOpen, onClose }) => {
         <div className="mt-4 flex justify-between items-center border-t border-gray-700 pt-4">
           <p className="text-textPrimary font-bold text-xl">${product.price.toLocaleString()}</p>
           <p className="text-gray-500 text-sm">Stock disponible: {product.stock}</p>
-          <Button size="medium" className=" text-green-600 border-green-600 hover:bg-green-900" onClick={handleAddToCart}>
+          <Button size="medium" className=" !text-white !border-green-600 hover:!bg-green-900" onClick={handleAddToCart}>
             Agregar {quantity} al Carrito {selectedSize && `(Talla: ${selectedSize})`}
           </Button>
         </div>

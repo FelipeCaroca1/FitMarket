@@ -69,7 +69,7 @@ const Shop = () => {
                 <p className="text-white font-semibold">${product.price.toLocaleString()}</p>
                 <p className="text-gray-600 text-sm">Stock: {product.stock}</p>
               </div>
-              <Button size="small" className=" text-green-600 border-green-600 hover:bg-green-900" onClick={() => openModal(product._id)}>Ver Más</Button>
+              <Button size="small" className=" !text-white !border-green-600 hover:!bg-green-900" onClick={() => openModal(product._id)}>Ver Más</Button>
             </div>
           </div>
         ))}

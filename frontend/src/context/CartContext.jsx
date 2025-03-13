@@ -7,7 +7,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  // 👉 NUEVO estado para manejar visibilidad del carrito sidebar
+
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const openCart = () => setIsCartOpen(true);

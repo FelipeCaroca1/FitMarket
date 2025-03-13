@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(loggedInUser));
       localStorage.setItem("token", data.token);
 
-      navigate("/Profile");
+      navigate("/shop");
     } catch (error) {
       console.error("Error en el inicio de sesión:", error.message);
     }

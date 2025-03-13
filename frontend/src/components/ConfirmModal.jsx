@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Button from "./Button"; // ✅ Botón reutilizable
+import Button from "./Button"; 
 
 const ConfirmModal = ({ isOpen, title, message, onConfirm, onCancel }) => {
   if (!isOpen) return null;
@@ -10,10 +10,10 @@ const ConfirmModal = ({ isOpen, title, message, onConfirm, onCancel }) => {
         <h3 className="text-xl font-semibold mb-4">{title}</h3>
         <p className="mb-6 text-gray-300">{message}</p>
         <div className="flex justify-end space-x-4">
-          <Button size="medium" onClick={onCancel} className="border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white">
+          <Button size="medium" onClick={onCancel} >
             Cancelar
           </Button>
-          <Button size="medium" onClick={onConfirm}>Confirmar</Button>
+          <Button size="medium" className="!border-green-700 !text-white hover:!bg-green-900 " onClick={onConfirm}>Confirmar</Button>
         </div>
       </div>
     </div>

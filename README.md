@@ -30,7 +30,7 @@ Antes de comenzar, asegúrate de tener instalados:
 Crea un archivo **.env** en la carpeta `backend` y añade lo siguiente:
 ```env
 PORT=5000
-MONGO_URI=tu_mongo_uri
+MONGO_URI=mongodb+srv://admin:6342@cluster0.by7j7.mongodb.net/FitMarket?retryWrites=true&w=majority
 JWT_SECRET=tu_secreto
 STRIPE_SECRET_KEY=tu_clave_secreta_stripe
 STRIPE_PUBLIC_KEY=tu_clave_publica_stripe
@@ -58,12 +58,6 @@ cd frontend
 npm run dev
 ```
 
----
-
-## 📸 Capturas de pantalla
-🌟 *(Aquí puedes agregar imágenes de la app funcionando.)*
-
----
 
 ## 🛠️ Tecnologías utilizadas
 - **Frontend:** React, Vite, Tailwind CSS

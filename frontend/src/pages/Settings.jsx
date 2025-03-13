@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser.js";
-import useAuth from "../hooks/useAuth.js"; 
-import Button from "../components/Button";
-import ConfirmModal from "../components/ConfirmModal";
+import Button from "../components/Button.jsx";
 
-const Profile = () => {
+const Settings = () => {
   const { userProfile, updateUserProfile, getUserProfile } = useUser();
-  const { logoutUser, deleteAccount } = useAuth(); 
   const navigate = useNavigate();
-  
+
   const [loading, setLoading] = useState(true);
   const [hasChanges, setHasChanges] = useState(false);
-  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     apellido: userProfile?.apellido || "",
     direccion: userProfile?.direccion || "",
@@ -27,9 +22,9 @@ const Profile = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login"); 
+      navigate("/login");
     } else if (!userProfile) {
-      getUserProfile(token); 
+      getUserProfile(token);
     } else {
       setFormData({
         apellido: userProfile.apellido || "",
@@ -41,7 +36,7 @@ const Profile = () => {
       });
       setLoading(false);
     }
-}, [userProfile, navigate, getUserProfile]);
+  }, [userProfile, navigate, getUserProfile]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,25 +46,11 @@ const Profile = () => {
   const handleSaveChanges = async () => {
     await updateUserProfile(formData);
     setHasChanges(false);
-  };
-
-  const handleLogout = () => setIsLogoutModalOpen(true);
-  const handleDeleteAccount = () => setIsDeleteModalOpen(true);
-
-  const confirmLogout = () => {
-    logoutUser();
-    setIsLogoutModalOpen(false);
-    navigate("/");
-  };
-
-  const confirmDeleteAccount = async () => {
-    await deleteAccount();
-    setIsDeleteModalOpen(false);
-    navigate("/");
+    window.location.reload();
   };
 
   if (loading) {
-    return <p className="text-center text-white">Cargando perfil...</p>;
+    return <p className="text-center text-white">Cargando configuración...</p>;
   }
 
   return (
@@ -143,32 +124,14 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 mt-7">
-          <Button size="small" onClick={handleSaveChanges} disabled={!hasChanges}>
+        <div className="flex justify-left gap-4 mt-7">
+          <Button size="small" className="!text-white !border-green-600 hover:!bg-green-900" onClick={handleSaveChanges} disabled={!hasChanges}>
             Guardar cambios
           </Button>
-          <Button size="small" onClick={handleLogout}>Cerrar Sesión</Button>
-          <Button size="small" onClick={handleDeleteAccount}>Eliminar Cuenta</Button>
         </div>
       </div>
-
-      <ConfirmModal
-        isOpen={isLogoutModalOpen}
-        title="Confirmar Cierre de Sesión"
-        message="¿Estás seguro de que quieres cerrar sesión?"
-        onConfirm={confirmLogout}
-        onCancel={() => setIsLogoutModalOpen(false)}
-      />
-
-      <ConfirmModal
-        isOpen={isDeleteModalOpen}
-        title="Eliminar Cuenta"
-        message="¿Seguro que quieres eliminar tu cuenta? Esta acción es irreversible."
-        onConfirm={confirmDeleteAccount}
-        onCancel={() => setIsDeleteModalOpen(false)}
-      />
     </div>
   );
 };
 
-export default Profile;
+export default Settings;

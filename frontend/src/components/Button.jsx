@@ -11,7 +11,7 @@ const Button = ({ children, onClick, type = "button", size = "medium", className
     <button
       type={type}
       onClick={onClick}
-      className={`rounded-full border-2 border-red-500 text-red-500 
+      className={`rounded-full border-2 border-red-500 text-white 
                   hover:bg-red-500 hover:text-white transition-all duration-300 font-semibold 
                   ${sizeClasses[size]} ${className}`}
     >
