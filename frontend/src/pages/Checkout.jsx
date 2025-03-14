@@ -53,13 +53,21 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     try {
+      const token = localStorage.getItem("token");
+      const user = JSON.parse(localStorage.getItem("user"));
+
       const response = await fetch("http://localhost:5000/api/checkout/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ cartItems }),
+        body: JSON.stringify({
+          cartItems,
+          userId: user?._id,
+        }),
       });
+
       const data = await response.json();
       if (data.url) {
         window.location.href = data.url;

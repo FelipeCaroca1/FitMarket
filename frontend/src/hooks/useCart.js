@@ -1,15 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import CartContext from "../context/CartContext.jsx";
 
-const useCart = () => {
-  const context = useContext(CartContext);
-  const [state, setState] = useState(context);
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
 
-  useEffect(() => {
-    setState({ ...context }); // 🔥 Esto forzará la actualización del estado en ProductDetailModal
-  }, [context]);
-
-  return state;
-};
+const useCart = () => useContext(CartContext);
 
 export default useCart;

@@ -3,15 +3,12 @@
 const AboutUs = () => {
     return (
         <div
-            className="min-h-screen w-full bg-cover bg-center flex flex-col items-center text-white"
-            style={{ backgroundImage: "url('/img/cta-background.jpg')" }}>
-            <div className="w-full rounded-lg bg-black bg-opacity-70 p-8">
-                <h1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300"
-                >
+            className="min-h-screen w-full bg-cover bg-center flex flex-col items-center  text-white"
+            style={{ backgroundImage: "url('/img/cta-background.jpg')", backgroundAttachment: "fixed" }}>
+            <div className="w-full rounded-lg bg-black bg-opacity-80 p-8">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-400 to-gray-300">
                     Sobre FitMarket
                 </h1>
-
                 <section className="mt-6 text-lg text-init max-w-3xl mx-auto">
                     <h2 className="text-2xl font-semibold text-red-500">Nuestra Misión</h2>
                     <p className="mt-2">En FitMarket, nos dedicamos a ofrecer productos de alta calidad para ayudar a las personas a alcanzar sus objetivos de salud y bienestar de manera efectiva y segura.</p>

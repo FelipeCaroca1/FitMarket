@@ -13,9 +13,10 @@ import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import AboutUs from "./pages/AboutUs";
 import Guides from "./pages/Guides";
-import CartSidebar from "./components/CartSideBar";
+import CartSidebar from "./components/CartSidebar";
 import Privacy from "./pages/Privacy";
 import Support from "./pages/Support";
+import Orders from "./pages/Orders";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -88,6 +89,14 @@ function App() {
             element={
               <PrivateRoutes>
                 <Support />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <PrivateRoutes>
+                <Orders />
               </PrivateRoutes>
             }
           />

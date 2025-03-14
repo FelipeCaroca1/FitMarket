@@ -13,6 +13,10 @@ const createCheckoutSession = async (req, res) => {
       return res.status(400).json({ message: "El carrito está vacío" });
     }
 
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Usuario no autenticado: req.user.id no disponible" });
+    }
+
     const lineItems = cartItems.map((item) => ({
       price_data: {
         currency: "usd",
@@ -31,13 +35,27 @@ const createCheckoutSession = async (req, res) => {
       mode: "payment",
       success_url: "http://localhost:5173/success",
       cancel_url: "http://localhost:5173/cancel",
+      metadata: {
+        userId: req.user.id,
+        cartItems: JSON.stringify(
+          cartItems.map(item => ({
+            _id: item._id,
+            quantity: item.quantity,
+            price: item.price,
+          }))
+        ),
+      },
     });
 
+    if (!session || !session.url) {
+      return res.status(500).json({ message: "No se recibió URL de Stripe" });
+    }
 
     res.json({ url: session.url });
+
   } catch (error) {
-    console.error("❌ Error creando la sesión de checkout:", error);
-    res.status(500).json({ message: "Error al procesar el pago" });
+    console.error("❌ Error creando sesión de checkout:", error.message);
+    return res.status(500).json({ message: "Error al crear sesión de Stripe", error: error.message });
   }
 };
 
