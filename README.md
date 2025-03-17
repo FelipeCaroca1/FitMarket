@@ -44,6 +44,10 @@ npm install
 cd ../frontend
 npm install
 ```
+Para el correcto funcionamiento del historial de compras, se implementó el registro automático de órdenes mediante Webhooks de Stripe, los cuales insertan las órdenes en MongoDB después de un pago exitoso. Esto asegura que el historial sea robusto y persistente, sin depender del frontend para guardar los pedidos.
+
+También se creó una ruta protegida para consultar el historial de compras del usuario autenticado.
+
 
 ### 5️⃣ Iniciar la aplicación
 Ejecuta los servidores de frontend y backend en pestañas separadas:
