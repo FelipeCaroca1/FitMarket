@@ -13,7 +13,7 @@ const products = [
     price: 29990,
     category: "Suplementos",
     stock: 50,
-    image: "http://localhost:5000/images/Proteina.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/Proteina.jpg",
     detalles: {
       uso: "Mezclar una porción (30g) con 250ml de agua o leche después del entrenamiento.",
       beneficios: ["Favorece la recuperación muscular", "Aporta proteínas de alta calidad", "Bajo en grasas"],
@@ -34,7 +34,7 @@ const products = [
     price: 49990,
     category: "Equipamiento",
     stock: 20,
-    image: "http://localhost:5000/images/mancuernas.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/mancuernas.jpg",
     detalles: {
       uso: "Utilizar para realizar ejercicios de fuerza y tonificación.",
       beneficios: ["Ajuste fácil de peso", "Diseño ergonómico", "Ideal para entrenamientos en casa"],
@@ -46,7 +46,7 @@ const products = [
     price: 19990,
     category: "Suplementos",
     stock: 30,
-    image: "http://localhost:5000/images/Creatina.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/Creatina.jpg",
     detalles: {
       uso: "Consumir 5g diarios disueltos en agua o jugo antes del entrenamiento.",
       beneficios: ["Incrementa la fuerza y potencia", "Mejora la recuperación post-entrenamiento"],
@@ -67,7 +67,7 @@ const products = [
     price: 9990,
     category: "Accesorios",
     stock: 40,
-    image: "http://localhost:5000/images/cuerda.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/cuerda.jpg",
     detalles: {
       uso: "Ajustar la longitud según la altura y utilizar para sesiones de cardio.",
       beneficios: ["Mejora la coordinación", "Incrementa la resistencia cardiovascular"],
@@ -79,7 +79,7 @@ const products = [
     price: 15990,
     category: "Salud",
     stock: 25,
-    image: "http://localhost:5000/images/colageno.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/colageno.jpg",
     detalles: {
       uso: "Tomar 10g disueltos en agua una vez al día.",
       beneficios: [
@@ -108,7 +108,7 @@ const products = [
     price: 129990,
     category: "Equipamiento",
     stock: 10,
-    image: "http://localhost:5000/images/barraOlimpica.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/barraOlimpica.jpg",
     detalles: {
       uso: "Utilizar con discos compatibles para levantamientos como sentadillas o press de banca.",
       beneficios: ["Alta resistencia", "Agarre antideslizante"],
@@ -120,7 +120,7 @@ const products = [
     price: 24990,
     category: "Accesorios",
     stock: 15,
-    image: "http://localhost:5000/images/tobilleras.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/tobilleras.jpg",
     detalles: {
       uso: "Colocar en los tobillos para ejercicios de piernas y glúteos.",
       beneficios: ["Añade resistencia", "Mejora la tonificación muscular"],
@@ -132,7 +132,7 @@ const products = [
     price: 59990,
     category: "Ropa",
     stock: 20,
-    image: "http://localhost:5000/images/zapatillas.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/zapatillas.jpg",
     tallas: ["38", "39", "40", "41", "42"],
     detalles: {
       uso: "Recomendadas para correr y entrenamientos de alta intensidad.",
@@ -145,7 +145,7 @@ const products = [
     price: 19990,
     category: "Ropa",
     stock: 25,
-    image: "http://localhost:5000/images/leggins.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/leggins.jpg",
     tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       uso: "Usar durante entrenamientos o actividades deportivas.",
@@ -158,7 +158,7 @@ const products = [
     price: 14990,
     category: "Ropa",
     stock: 30,
-    image: "http://localhost:5000/images/camiseta.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/camiseta.jpg",
     tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       uso: "Ideal para actividades físicas que requieren comodidad y ventilación.",
@@ -171,7 +171,7 @@ const products = [
     price: 22990,
     category: "Suplementos",
     stock: 40,
-    image: "http://localhost:5000/images/bcaa.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/bcaa.jpg",
     detalles: {
       uso: "Consumir 7g antes o durante el entrenamiento.",
       beneficios: [
@@ -200,7 +200,7 @@ const products = [
     price: 28990,
     category: "Alimentos",
     stock: 50,
-    image: "http://localhost:5000/images/barrasProteina.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/barrasProteina.jpg",
     detalles: {
       uso: "Consumir como snack entre comidas o después del ejercicio.",
       beneficios: ["Alto en proteínas", "Bajo contenido de azúcar"],
@@ -221,7 +221,7 @@ const products = [
     price: 21990,
     "category": "Suplementos",
     stock: 35,
-    image: "http://localhost:5000/images/preEntreno.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/preEntreno.jpg",
     detalles: {
       uso: "Consumir 10g con agua 30 minutos antes del entrenamiento.",
       beneficios: [
@@ -251,7 +251,7 @@ const products = [
     price: 12990,
     category: "Accesorios",
     stock: 30,
-    image: "http://localhost:5000/images/bandaElastica.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/bandaElastica.jpg",
     detalles: {
       uso: "Utilizar para estiramientos y ejercicios de fuerza.",
       beneficios: ["Versátil", "Ligera y portátil"],
@@ -263,7 +263,7 @@ const products = [
     price: 9900,
     category: "Accesorios",
     stock: 20,
-    image: "http://localhost:5000/images/guantes.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/guantes.jpg",
     detalles: {
       uso: "Proteger las manos durante el levantamiento de pesas.",
       beneficios: ["Previene ampollas", "Mejora el agarre"],
@@ -275,7 +275,7 @@ const products = [
     price: 7990,
     category: "Accesorios",
     stock: 40,
-    image: "http://localhost:5000/images/botella.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/botella.jpg",
     detalles: {
       uso: "Ideal para mantenerse hidratado durante entrenamientos.",
       beneficios: ["Fácil de transportar", "Material libre de BPA"],
@@ -287,7 +287,7 @@ const products = [
     price: 12990,
     category: "Salud",
     stock: 35,
-    image: "http://localhost:5000/images/omega3.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/omega3.jpg",
     detalles: {
       beneficios: [
         "Mejora la salud cardiovascular",
@@ -312,7 +312,7 @@ const products = [
     price: 14990,
     category: "Salud",
     stock: 40,
-    image: "http://localhost:5000/images/multivitaminicoMujer.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/multivitaminicoMujer.jpg",
     detalles: {
       beneficios: [
         "Apoya la salud ósea y cardiovascular",
@@ -348,7 +348,7 @@ const products = [
     price: 2990,
     category: "Alimentos",
     stock: 50,
-    image: "http://localhost:5000/images/yogurtProteico.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/yogurtProteico.jpg",
     detalles: {
       beneficios: [
         "Favorece la recuperación muscular",
@@ -374,7 +374,7 @@ const products = [
     price: 9990,
     category: "Alimentos",
     stock: 45,
-    image: "http://localhost:5000/images/barraGranola.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/barraGranola.jpg",
     detalles: {
       beneficios: [
         "Aporta energía sostenida",
@@ -400,7 +400,7 @@ const products = [
     price: 24990,
     category: "Ropa",
     stock: 30,
-    image: "http://localhost:5000/images/tightsMujer.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/tightsMujer.jpg",
     tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       "beneficios": [
@@ -417,7 +417,7 @@ const products = [
     price: 15990,
     category: "Accesorios",
     stock: 25,
-    image: "http://localhost:5000/images/pesasTobillo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/pesasTobillo.jpg",
     detalles: {
       beneficios: [
         "Fortalece glúteos y piernas",
@@ -433,7 +433,7 @@ const products = [
     price: 19990,
     category: "Accesorios",
     stock: 40,
-    image: "http://localhost:5000/images/matYoga.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/matYoga.jpg",
     detalles: {
       beneficios: [
         "Superficie antideslizante",
@@ -449,7 +449,7 @@ const products = [
     price: 6990,
     category: "Accesorios",
     stock: 50,
-    image: "http://localhost:5000/images/shaker.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/shaker.jpg",
     detalles: {
       beneficios: [
         "Facilita la mezcla de proteínas y preentrenos",
@@ -465,7 +465,7 @@ const products = [
     price: 18990,
     category: "Ropa",
     stock: 20,
-    image: "http://localhost:5000/images/sujetadorDeportivo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/sujetadorDeportivo.jpg",
     tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       beneficios: [
@@ -482,7 +482,7 @@ const products = [
     price: 7990,
     category: "Alimentos",
     stock: 25,
-    image: "http://localhost:5000/images/aceiteCoco.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/aceiteCoco.jpg",
     detalles: {
       beneficios: [
         "Ideal para cocinar a altas temperaturas",
@@ -508,7 +508,7 @@ const products = [
     price: 17990,
     category: "Ropa",
     stock: 28,
-    image: "http://localhost:5000/images/topDeportivo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/topDeportivo.jpg",
     tallas: ["XS", "S", "M", "L", "XL"],
     detalles: {
       beneficios: [
@@ -525,7 +525,7 @@ const products = [
     price: 6990,
     category: "Accesorios",
     stock: 35,
-    image: "http://localhost:5000/images/toallaDeportiva.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/toallaDeportiva.jpg",
     detalles: {
       beneficios: [
         "Alta capacidad de absorción",
@@ -541,7 +541,7 @@ const products = [
     price: 2490,
     category: "Alimentos",
     stock: 60,
-    image: "http://localhost:5000/images/bebidaIsotonica.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/bebidaIsotonica.jpg",
     detalles: {
       beneficios: [
         "Rehidrata rápidamente",
@@ -566,7 +566,7 @@ const products = [
     price: 14990,
     category: "Accesorios",
     stock: 30,
-    image: "http://localhost:5000/images/muslera.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/muslera.jpg",
     detalles: {
       beneficios: [
         "Reduce la fatiga muscular",
@@ -582,7 +582,7 @@ const products = [
     price: 19990,
     category: "Accesorios",
     stock: 15,
-    image: "http://localhost:5000/images/cinturonLevantamiento.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/cinturonLevantamiento.jpg",
     detalles: {
       beneficios: [
         "Previene lesiones lumbares",
@@ -598,7 +598,7 @@ const products = [
     price: 34990,
     category: "Suplementos",
     stock: 25,
-    image: "http://localhost:5000/images/proteinaIsolate.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/proteinaIsolate.jpg",
     detalles: {
       beneficios: [
         "Alta concentración de proteína",
@@ -621,7 +621,7 @@ const products = [
     price: 7990,
     category: "Salud",
     stock: 30,
-    image: "http://localhost:5000/images/vinagreManzana.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/vinagreManzana.jpg",
     detalles: {
       uso: "Diluir 1 cucharada en un vaso de agua antes de las comidas.",
       beneficios: [
@@ -650,7 +650,7 @@ const products = [
     price: 14990,
     category: "Alimentos",
     stock: 40,
-    image: "http://localhost:5000/images/galletasProteicas.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/galletasProteicas.jpg",
     detalles: {
       beneficios: [
         "Fuente de proteínas para recuperación muscular",
@@ -676,7 +676,7 @@ const products = [
     price: 16990,
     category: "Ropa",
     stock: 25,
-    image: "http://localhost:5000/images/camisetaHombre.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/camisetaHombre.jpg",
     tallas: ["S", "M", "L", "XL", "XXL"],
     detalles: {
       beneficios: [
@@ -693,7 +693,7 @@ const products = [
     price: 31990,
     category: "Suplementos",
     stock: 20,
-    image: "http://localhost:5000/images/proteinaVegetal.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/proteinaVegetal.jpg",
     detalles: {
       beneficios: [
         "Apta para veganos",
@@ -718,7 +718,7 @@ const products = [
     price: 18990,
     category: "Equipamiento",
     stock: 18,
-    image: "http://localhost:5000/images/ruedaAbdominal.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/ruedaAbdominal.jpg",
     detalles: {
       beneficios: [
         "Tonifica abdomen y espalda",
@@ -734,7 +734,7 @@ const products = [
     price: 20990,
     category: "Suplementos",
     stock: 25,
-    image: "http://localhost:5000/images/preEntrenoNatural.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/preEntrenoNatural.jpg",
     detalles: {
       uso: "Mezclar 10g con 250ml de agua antes del entrenamiento.",
       beneficios: [
@@ -764,7 +764,7 @@ const products = [
     price: 14990,
     category: "Accesorios",
     stock: 30,
-    image: "http://localhost:5000/images/bandasResistencia.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/bandasResistencia.jpg",
     detalles: {
       beneficios: [
         "Fortalece todo el cuerpo",
@@ -780,7 +780,7 @@ const products = [
     price: 5990,
     category: "Alimentos",
     stock: 50,
-    image: "http://localhost:5000/images/jengibrePolvo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/jengibrePolvo.jpg",
     detalles: {
       beneficios: [
         "Favorece la digestión",
@@ -804,7 +804,7 @@ const products = [
     price: 13990,
     category: "Accesorios",
     stock: 20,
-    image: "http://localhost:5000/images/rodillera.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/rodillera.jpg",
     detalles: {
       beneficios: [
         "Reduce riesgo de lesiones",
@@ -820,7 +820,7 @@ const products = [
     price: 22990,
     category: "Ropa",
     stock: 22,
-    image: "http://localhost:5000/images/leggingsMujer.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/leggingsMujer.jpg",
     tallas: ["S", "M", "L", "XL", "XXL"],
     detalles: {
       beneficios: [
@@ -837,7 +837,7 @@ const products = [
     price: 10990,
     category: "Salud",
     stock: 30,
-    image: "http://localhost:5000/images/cafeVerde.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/cafeVerde.jpg",
     detalles: {
       uso: "Consumir 1 taza al día por la mañana.",
       beneficios: [
@@ -862,7 +862,7 @@ const products = [
     price: 24990,
     category: "Equipamiento",
     stock: 15,
-    image: "http://localhost:5000/images/colchonetaFitness.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/colchonetaFitness.jpg",
     detalles: {
       beneficios: [
         "Fácil de transportar",
@@ -878,7 +878,7 @@ const products = [
     price: 19990,
     category: "Accesorios",
     stock: 18,
-    image: "http://localhost:5000/images/bolsoDeportivo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/bolsoDeportivo.jpg",
     detalles: {
       beneficios: [
         "Resistente al agua",
@@ -894,7 +894,7 @@ const products = [
     price: 5990,
     category: "Accesorios",
     stock: 40,
-    image: "http://localhost:5000/images/cintillo.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/cintillo.jpg",
     detalles: {
       beneficios: [
         "Evita que el sudor llegue a los ojos",
@@ -910,7 +910,7 @@ const products = [
     price: 17990,
     category: "Ropa",
     stock: 18,
-    image: "http://localhost:5000/images/shortHombre.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/shortHombre.jpg",
     tallas: ["S", "M", "L", "XL", "XXL"],
     detalles: {
       beneficios: [
@@ -927,7 +927,7 @@ const products = [
     price: 16990,
     category: "Ropa",
     stock: 20,
-    image: "http://localhost:5000/images/shortMujer.jpg",
+    image: "https://fitmarket-mjna.onrender.com/images/shortMujer.jpg",
     tallas: ["XS", "S", "M", "L"],
     detalles: {
       beneficios: [

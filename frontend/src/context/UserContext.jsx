@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
 
   const getUserProfile = async (token) => {
     try {
-      const response = await fetch("http://localhost:5000/api/user/profile", {
+      const response = await fetch("https://fitmarket-mjna.onrender.com/api/user/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
         throw new Error("No se encontró el token en localStorage");
       }
       
-      const response = await fetch("http://localhost:5000/api/user/profile", {
+      const response = await fetch("https://fitmarket-mjna.onrender.com/api/user/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const UserProvider = ({ children }) => {
         throw new Error("No se encontró el token en localStorage");
       }
       
-      const response = await fetch("http://localhost:5000/api/user/delete", {
+      const response = await fetch("https://fitmarket-mjna.onrender.com/api/user/delete", {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

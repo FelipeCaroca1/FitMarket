@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API_URL = "http://localhost:5000/api/products"; // URL del backend
+const API_URL = "https://fitmarket-mjna.onrender.com/api/products"; // URL del backend
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);

@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_AUTH = "http://localhost:5000/api/auth";
-const API_USER = "http://localhost:5000/api/user";
+const API_AUTH = "https://fitmarket-mjna.onrender.com/api/auth";
+const API_USER = "https://fitmarket-mjna.onrender.com/api/user";
 
 const useAuth = () => {
   const [user, setUser] = useState(() => {

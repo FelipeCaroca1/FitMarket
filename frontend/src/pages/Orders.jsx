@@ -21,7 +21,7 @@ const Orders = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:5000/api/orders/history", {
+                const response = await fetch("https://fitmarket-mjna.onrender.com/api/orders/history", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

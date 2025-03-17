@@ -12,7 +12,7 @@ const Shop = () => {
 
   const openModal = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${productId}`);
+      const response = await fetch(`https://fitmarket-mjna.onrender.com/api/products/${productId}`);
       if (!response.ok) {
         throw new Error("Error al obtener detalles del producto");
       }

@@ -56,7 +56,7 @@ const Checkout = () => {
       const token = localStorage.getItem("token");
       const user = JSON.parse(localStorage.getItem("user"));
 
-      const response = await fetch("http://localhost:5000/api/checkout/create-checkout-session", {
+      const response = await fetch("https://fitmarket-mjna.onrender.com/api/checkout/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
