@@ -5,7 +5,7 @@ import Button from "../components/Button";
 const Register = () => {
   const { registerUser, user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
-    name: "", // ⬅️ Ahora los inputs coinciden con estas claves
+    name: "", 
     email: "",
     password: "",
   });
@@ -28,7 +28,7 @@ const Register = () => {
   
     try {
       await registerUser({
-        name: formData.name, // ⬅️ Ahora coincide con el estado
+        name: formData.name, 
         email: formData.email,
         password: formData.password,
       });
@@ -48,7 +48,7 @@ const Register = () => {
               <label className="text-sm">Nombre</label>
               <input
                 type="text"
-                name="name" // ⬅️ Ahora coincide con formData
+                name="name" 
                 value={formData.name}
                 onChange={handleChange}
                 autoComplete="new-name"
@@ -60,7 +60,7 @@ const Register = () => {
               <label className="text-sm">Correo Electrónico</label>
               <input
                 type="email"
-                name="email" // ⬅️ Ahora coincide con formData
+                name="email" 
                 value={formData.email}
                 onChange={handleChange}
                 autoComplete="new-email"
@@ -73,7 +73,7 @@ const Register = () => {
             <label className="text-sm">Contraseña</label>
             <input
               type="password"
-              name="password" // ⬅️ Ahora coincide con formData
+              name="password" 
               value={formData.password}
               onChange={handleChange}
               autoComplete="new-password"

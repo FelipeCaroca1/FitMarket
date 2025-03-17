@@ -7,11 +7,11 @@ const router = express.Router();
 router.post("/create-checkout-session", protect, createCheckoutSession);
 
 router.get("/success", (req, res) => {
-  res.redirect("http://localhost:5173/success");
+  res.redirect("https://fitmarket-frontend.onrender.com/success");
 });
 
 router.get("/cancel", (req, res) => {
-  res.redirect("http://localhost:5173/cancel");
+  res.redirect("https://fitmarket-frontend.onrender.com/cancel");
 });
 
 module.exports = router;
