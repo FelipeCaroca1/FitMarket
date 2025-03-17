@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
-const API_AUTH = "http://localhost:5000/api/auth";
+const API_AUTH = "https://fitmarket-mjna.onrender.com/api/auth";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
