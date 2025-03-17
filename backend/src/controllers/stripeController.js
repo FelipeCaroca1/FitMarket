@@ -33,8 +33,8 @@ const createCheckoutSession = async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:5173/success",
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: "https://fitmarket-frontend.onrender.com/success",
+      cancel_url: "https://fitmarket-frontend.onrender.com/cancel",
       metadata: {
         userId: req.user.id,
         cartItems: JSON.stringify(
