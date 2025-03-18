@@ -15,7 +15,7 @@ const ProductFilter = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="flex justify-end mb-4">
+    <div className="mb-6 flex justify-end">
       <label htmlFor="categoryFilter" className="sr-only">
         Filtrar por categoría:
       </label>
@@ -23,7 +23,7 @@ const ProductFilter = ({ onFilterChange }) => {
         id="categoryFilter"
         value={selectedCategory}
         onChange={handleCategoryChange}
-        className="p-2 rounded bg-[#2d2d2d] text-white focus:outline-none border border-gray-600 focus:border-green-700 hover:border-green-700 hover:bg-[#3a3a3a] transition"
+        className="bg-black text-white border border-gray-600 rounded-md px-3 py-2 text-sm transition-transform transform hover:scale-105 duration-300 hover:shadow-[0_0_20px_rgba(0,255,0,0.7)]"
       >
         {categories.map((category) => (
           <option key={category} value={category}>
