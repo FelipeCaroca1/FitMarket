@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback} from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
-
 const API_AUTH = "https://fitmarket-mjna.onrender.com/api/auth";
+const API_USER = "https://fitmarket-mjna.onrender.com/api/user";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -52,7 +52,9 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(loggedInUser));
       localStorage.setItem("token", data.token);
 
-      navigate("/shop");
+      setTimeout(() => {
+        navigate("/shop");
+      }, 100);
     } catch (error) {
       console.error("Error en el inicio de sesión:", error.message);
     }
@@ -84,18 +86,38 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = useCallback(() => {
     setUser(null);
     localStorage.removeItem("user");
-    localStorage.removeItem("token"); 
-  
+    localStorage.removeItem("token");
+
     setTimeout(() => {
-      window.location.reload(); 
+      window.location.reload();
     }, 100);
 
     navigate("/");
-  
   }, [navigate]);
 
+  const deleteAccount = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("Token no encontrado");
+
+      const response = await fetch(`${API_USER}/delete`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error al eliminar la cuenta");
+      }
+
+      logoutUser();
+    } catch (error) {
+      console.error("Error al eliminar la cuenta:", error.message);
+    }
+  }, [logoutUser]);
+
   return (
-    <AuthContext.Provider value={{ user, registerUser, loginUser, logoutUser }}>
+    <AuthContext.Provider value={{ user, registerUser, loginUser, logoutUser, deleteAccount }}>
       {children}
     </AuthContext.Provider>
   );
@@ -106,3 +128,4 @@ AuthProvider.propTypes = {
 };
 
 export default AuthContext;
+
