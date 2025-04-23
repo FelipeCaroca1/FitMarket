@@ -29,7 +29,7 @@ app.use(
 
 app.use(express.json());
 
-app.use("/images", express.static(path.join(__dirname, "../backend/public/img")));
+app.use("/images", express.static(path.join(__dirname, "public", "img")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
