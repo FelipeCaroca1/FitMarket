@@ -71,4 +71,6 @@ npm run dev
 
 ---
 
+También puedes encontrar la app desplegada en https://fitmarket-frontend.onrender.com/
+
 📢 ¡Gracias por usar **FitMarket**! 💖
